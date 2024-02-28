@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=9 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
-[ext_resource type="PackedScene" uid="uid://b0eb2yt6v71dc" path="res://Other/player.tscn" id="2_oxyhy"]
+[ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
+[ext_resource type="PackedScene" uid="uid://b0eb2yt6v71dc" path="res://Player_Related/player.tscn" id="2_oxyhy"]
+[ext_resource type="PackedScene" uid="uid://c6b23n88kl8yk" path="res://Inventory/inventory.tscn" id="3_npxwj"]
+[ext_resource type="Script" path="res://Inventory/Inventory_Interface.gd" id="4_0asnx"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -17,6 +20,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="World" type="Node3D"]
+script = ExtResource("1_xdfob")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_2ohux")
@@ -29,3 +33,29 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_oxyhy")]
 transform = Transform3D(-0.99801, 0, -0.0630518, 0, 1, 0, 0.0630518, 0, -0.99801, 0.000657737, 1.12937, -23.0438)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryInterface" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_0asnx")
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerInventory" parent="UI/InventoryInterface" instance=ExtResource("3_npxwj")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -78.0
+offset_right = 20.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 0

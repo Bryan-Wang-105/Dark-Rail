@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://c0tv1oyh3844a"]
+
+[ext_resource type="Script" path="res://Item/item_data.gd" id="1_n4shd"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tgnws"]
+load_path = "res://.godot/imported/#1 - Transparent Icons.png-6b71a2f1321d77d16b4c4b54c3d444f1.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngugt"]
+atlas = SubResource("CompressedTexture2D_tgnws")
+region = Rect2(128, 192, 32, 32)
+
+[resource]
+script = ExtResource("1_n4shd")
+name = "Crossbow"
+description = "Shoots straight enough"
+stackable = false
+texture = SubResource("AtlasTexture_ngugt")

@@ -1,9 +1,14 @@
 extends CharacterBody3D
 
 @onready var head: Node3D = $head
+@export var inventory_data: InventoryData
+
 
 var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+
+signal wheel_scroll
+var hotbar_pos = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -14,6 +19,7 @@ var lerp_speed = 10.0
 var capMouse = false
 
 func _ready() -> void:
+	#inventory_interface.set_player_inventory_data(inventory_data)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _input(event):
@@ -27,6 +33,33 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
+		# Handle jump.
+	if Input.is_action_just_pressed("tab"):
+		print("Current Inventory:")
+		print(inventory_data.slot_datas)
+
+	if Input.is_action_just_pressed("scroll_up"):
+		hotbar_pos += 1
+		if hotbar_pos > 5:
+			hotbar_pos = 0
+		
+		print("\nHotbar Position: %s -- Item at slot: %s" % [hotbar_pos, inventory_data.slot_datas[hotbar_pos]])
+		if inventory_data.slot_datas[hotbar_pos]:
+			print(inventory_data.slot_datas[hotbar_pos].item_data.name)
+		
+		emit_signal("wheel_scroll")
+
+	if Input.is_action_just_pressed("scroll_down"):
+		hotbar_pos -= 1
+		if hotbar_pos < 0:
+			hotbar_pos = 5
+		
+		print("\nHotbar Position: %s -- Item at slot: %s" % [hotbar_pos, inventory_data.slot_datas[hotbar_pos]])
+		if inventory_data.slot_datas[hotbar_pos]:
+			print(inventory_data.slot_datas[hotbar_pos].item_data.name)
+			
+		emit_signal("wheel_scroll")
+
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -34,8 +67,6 @@ func _physics_process(delta: float) -> void:
 	# Handle sprint
 	if Input.is_action_pressed("sprint") and is_on_floor():
 		SPEED = 8
-	else:
-		SPEED = 5
 	
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
