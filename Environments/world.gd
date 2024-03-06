@@ -11,15 +11,13 @@ func _ready() -> void:
 	player.connect("update_inventory", _update_inventory)
 	
 	# Set initial inventory
-	inventory_interface.set_player_inventory_data(player.inventory_data)
+	inventory_interface.set_player_inventory_data(player.inventory_data, 0)
 
 func _on_scroll():
-	#print("Going to change color")
-	player_inventory.highlight_slot(player.hotbar_pos)
+	player_inventory.highlight_slot(player.hotbar_pos, player.inventory_data)
 
 func _update_inventory():
-	#print("Going to change color")
-	inventory_interface.set_player_inventory_data(player.inventory_data)
+	inventory_interface.set_player_inventory_data(player.inventory_data, player.hotbar_pos)
 	
 func _process(delta: float) -> void:
 	pass

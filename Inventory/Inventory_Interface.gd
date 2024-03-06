@@ -5,8 +5,8 @@ extends Control
 
 signal drop_item(item: SlotData)
 
-func set_player_inventory_data(inventory_data: InventoryData) -> void:
-	player_inventory.set_inventory_data(inventory_data)
+func set_player_inventory_data(inventory_data: InventoryData, hotbar_pos: int) -> void:
+	player_inventory.set_inventory_data(inventory_data, hotbar_pos)
 
 func _ready() -> void:
 	player.connect("drop_item", _drop_item)

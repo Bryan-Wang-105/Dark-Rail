@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k6oer73ovi52"]
+[gd_scene load_steps=12 format=3 uid="uid://k6oer73ovi52"]
 
 [ext_resource type="Script" path="res://Item/item_assets/crossbow.gd" id="1_cs5m4"]
 [ext_resource type="Resource" uid="uid://c0tv1oyh3844a" path="res://Item/items/crossbow.tres" id="2_141sh"]
@@ -26,6 +26,9 @@ points = PackedVector3Array(0.025, 0.025, 0.15, 0.025, -0.025, 0.15, 0.025, 0.02
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_77oxr"]
 points = PackedVector3Array(-0.025, -0.025, -0.139683, 0.0297619, 0.0297619, 0.152381, 0.0297619, -0.027381, 0.152381, 0.0297619, 0.0297619, -0.152381, -0.027381, 0.0297619, 0.152381, 0.0297619, -0.027381, -0.152381, -0.027381, 0.0297619, -0.152381, -0.025, -0.025, 0.139683)
+
+[sub_resource type="BoxMesh" id="BoxMesh_x4omu"]
+size = Vector3(0.4, 0.02, 0.02)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 script = ExtResource("1_cs5m4")
@@ -57,3 +60,7 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pbxm7")
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.752771, 0, -0.658282, 0, 1, 0, 0.658282, 0, 0.752771, -0.0939218, 0, -0.180745)
 shape = SubResource("ConvexPolygonShape3D_77oxr")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0237639, -0.0746188)
+mesh = SubResource("BoxMesh_x4omu")

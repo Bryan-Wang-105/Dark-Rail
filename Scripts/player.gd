@@ -79,7 +79,7 @@ func _physics_process(delta: float) -> void:
 
 			# Get the camera's forward vector (direction it is facing)
 			var camera_direction = -camera_transform.basis.z.normalized()
-			drop_node.linear_velocity = camera_direction * 3
+			drop_node.linear_velocity = (camera_direction * 3) + (.65 * velocity)
 			
 			get_parent().add_child(drop_node)
 		
@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 			emit_signal("update_inventory")
 
 	# Scrolling
-	if Input.is_action_just_pressed("scroll_down"):
+	if Input.is_action_just_pressed("scroll_up"):
 		hotbar_pos += 1
 		if hotbar_pos > 5:
 			hotbar_pos = 0
@@ -102,7 +102,7 @@ func _physics_process(delta: float) -> void:
 		
 		emit_signal("wheel_scroll")
 
-	if Input.is_action_just_pressed("scroll_up"):
+	if Input.is_action_just_pressed("scroll_down"):
 		hotbar_pos -= 1
 		if hotbar_pos < 0:
 			hotbar_pos = 5 
