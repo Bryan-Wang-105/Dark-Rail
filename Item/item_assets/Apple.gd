@@ -2,6 +2,7 @@ extends RigidBody3D
 
 @export var slot_data: SlotData
 
+var item = true
 var prompt = null
 var player
 var world
@@ -39,7 +40,7 @@ func interact(needSwap) -> SlotData:
 
 static func use(player: CharacterBody3D):
 	print("Ate Apple")
-	player.hungerLvl += 10
+	player.hungerLvl -= 10
 
 	# Will return true to signal (consume / destroy item)	
 	return true

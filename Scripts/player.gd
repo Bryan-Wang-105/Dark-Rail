@@ -34,6 +34,7 @@ var lerp_speed = 10.0
 var tabVisible = false
 var perkBalance = 1
 var hungerLvl = 50
+var fare = 0
 
 func _ready() -> void:
 	#inventory_interface.set_player_inventory_data(inventory_data)
@@ -43,7 +44,7 @@ func _ready() -> void:
 	interact_ray.connect("update_inventory", call_update)
 
 func _input(event):
-	if event is InputEventMouseMotion and panel.visible == false:
+	if event is InputEventMouseMotion and tabVisible == false:
 		rotate_y(-event.relative.x * mouse_sens)
 		head.rotate_x(-event.relative.y * mouse_sens)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-85),deg_to_rad(85))
@@ -84,8 +85,12 @@ func _physics_process(delta: float) -> void:
 		else:
 			print("EMPTY")
 
+	if tabVisible:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		velocity = Vector3(0,velocity.y,0)
+
 		# Only do movement if not in tab menu
-	if panel.visible == false:
+	if tabVisible == false:
 		# Handle use item
 		if Input.is_action_just_pressed("use"):
 			if current_slot:
@@ -178,3 +183,6 @@ func _physics_process(delta: float) -> void:
 
 func call_update():
 	emit_signal("update_inventory")
+	
+func toggle_tabVisible():
+	tabVisible = !tabVisible

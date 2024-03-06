@@ -7,6 +7,7 @@ extends Node3D
 @onready var panel: Panel = $UI/Panel
 @onready var perk_balance: Label = $UI/Panel/PerkBalance
 @onready var hunger: Label = $UI/Panel/Hunger
+@onready var fare: Label = $UI/Panel/Fare
 
 func _ready() -> void:
 	# Set panel to invisible
@@ -30,6 +31,8 @@ func _ready() -> void:
 func _update_menu():
 	perk_balance.text = "Perk Balance: " + str(player.perkBalance)
 	hunger.text = "Hunger Level: " + str(player.hungerLvl)
+	fare.text = "Fare: $" + str(player.fare)
+
 func _on_scroll():
 	player_inventory.highlight_slot(player.hotbar_pos)
 

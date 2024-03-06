@@ -25,14 +25,20 @@ func _process(_delta: float) -> void:
 		if interactable != null and interactable.has_method("interact"):
 			needSwap = player.current_slot != null
 			
-			prompt.text = interactable.get_prompt(needSwap)
-			
-			if Input.is_action_just_pressed("interact"):
-				wasItem = interactable.interact(needSwap)
+			if interactable.item:
+				prompt.text = interactable.get_prompt(needSwap)
 				
-				if wasItem:
-					player.inventory_data.slot_datas[player.hotbar_pos] = wasItem
-					emit_signal("update_inventory")
+				if Input.is_action_just_pressed("interact"):
+					wasItem = interactable.interact(needSwap)
+					
+					if wasItem:
+						player.inventory_data.slot_datas[player.hotbar_pos] = wasItem
+						emit_signal("update_inventory")
+			else:
+				prompt.text = interactable.get_prompt()
+				if Input.is_action_just_pressed("interact"):
+					interactable.interact()
+					
 		else:
 			prompt.text = ""
 		

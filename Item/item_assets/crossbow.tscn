@@ -105,7 +105,6 @@ transform = Transform3D(-0.447993, 0, -0.894037, 0, 1, 0, 0.894037, 0, -0.447993
 shape = SubResource("ConvexPolygonShape3D_e348i")
 
 [node name="MeshInstance3D6" type="MeshInstance3D" parent="CollisionShape3D4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_x4omu")
 skeleton = NodePath("../..")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=15 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
 [ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" path="res://Inventory/Inventory_Interface.gd" id="4_0asnx"]
 [ext_resource type="Script" path="res://Environments/Panel.gd" id="6_tojry"]
 [ext_resource type="PackedScene" uid="uid://c32je37dwa80u" path="res://Item/item_assets/Apple.tscn" id="6_vcgyr"]
-[ext_resource type="FontFile" uid="uid://c36uj27nn71j1" path="res://Assets/LEMONMILK-Regular.otf" id="7_h3qir"]
+[ext_resource type="FontFile" uid="uid://c36uj27nn71j1" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="7_h3qir"]
 [ext_resource type="PackedScene" uid="uid://d1buffo3ps52l" path="res://Item/item_assets/KingsCoin.tscn" id="9_3lib6"]
+[ext_resource type="PackedScene" uid="uid://c6dsvwsrmvmid" path="res://Environments/market.tscn" id="10_hg4uw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -45,7 +46,7 @@ shadow_enabled = true
 [node name="Environment" parent="." instance=ExtResource("1_moki4")]
 
 [node name="Player" parent="." instance=ExtResource("2_oxyhy")]
-transform = Transform3D(-0.99801, 0, -0.0630518, 0, 1, 0, 0.0630518, 0, -0.99801, 0.000657737, 1.12937, -23.0438)
+transform = Transform3D(-0.99801, 0, -0.0630518, 0, 1, 0, 0.0630518, 0, -0.99801, 0.000657737, 1.12937, 20.0323)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -131,8 +132,20 @@ offset_bottom = 175.0
 theme_override_fonts/font = ExtResource("7_h3qir")
 text = "Hunger: "
 
+[node name="Fare" type="Label" parent="UI/Panel"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 80.0
+offset_right = 373.0
+offset_bottom = 103.0
+theme_override_fonts/font = ExtResource("7_h3qir")
+text = "Fare:"
+
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.879609, -20.3291)
 
 [node name="RigidBody3D" parent="." instance=ExtResource("9_3lib6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+
+[node name="Market" parent="." instance=ExtResource("10_hg4uw")]
+transform = Transform3D(-0.998383, 0, -0.0568496, 0, 1, 0, 0.0568496, 0, -0.998383, 0, 0, 22.0611)

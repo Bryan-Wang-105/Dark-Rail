@@ -2,6 +2,7 @@ extends RigidBody3D
 
 @export var slot_data: SlotData
 
+var item = true
 var prompt = null
 var player
 var world
