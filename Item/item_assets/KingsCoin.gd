@@ -31,18 +31,19 @@ func interact(needSwap) -> SlotData:
 		world.add_child(drop_node)
 
 	else:
-		print("Picked up this Crossbow!")
+		print("Picked up this Kings Coin!")
 		queue_free()
 	
 	return slot_data
 
 static func use(player: CharacterBody3D):
-	print("Shot Crossbow")
-	
-	# Will return true to signal (consume / destroy item)	
-	return false
+	print("Cashed in one perk point")
+	player.perkBalance += 1
 
-	
+	# Will return true to signal (consume / destroy item)	
+	return true
+
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass

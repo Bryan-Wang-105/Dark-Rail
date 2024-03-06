@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c32je37dwa80u"]
 
-[ext_resource type="Script" path="res://Item/items/Apple.gd" id="1_64fwo"]
+[ext_resource type="Script" path="res://Item/item_assets/Apple.gd" id="1_0m1ea"]
 [ext_resource type="Resource" uid="uid://mrnife3v7bd6" path="res://Item/items/Apple.tres" id="2_bbn8n"]
 [ext_resource type="Script" path="res://Inventory/slot_data.gd" id="3_2ms3a"]
 
@@ -39,7 +39,7 @@ radius = 0.1
 height = 0.3
 
 [node name="RigidBody3D" type="RigidBody3D"]
-script = ExtResource("1_64fwo")
+script = ExtResource("1_0m1ea")
 slot_data = SubResource("Resource_kg782")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="."]

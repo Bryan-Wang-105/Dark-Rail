@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bah6pxcqsr00p"]
+
+[ext_resource type="Script" path="res://Item/item_data.gd" id="1_jx2am"]
+[ext_resource type="Texture2D" uid="uid://chnlm0372k5dx" path="res://Item/#1 - Transparent Icons.png" id="2_revjm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jwprs"]
+atlas = ExtResource("2_revjm")
+region = Rect2(224, 384, 32, 32)
+
+[resource]
+script = ExtResource("1_jx2am")
+name = "King Coin"
+description = "A rare coin from the King, useful for acquiring perks"
+stackable = true
+texture = SubResource("AtlasTexture_jwprs")
+pathToAsset = "res://Item/item_assets/KingsCoin.tscn"
+pathToScript = "res://Item/item_assets/KingsCoin.gd"

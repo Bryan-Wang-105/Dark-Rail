@@ -16,9 +16,6 @@ func get_prompt(needSwap) -> String:
 
 func interact(needSwap) -> SlotData:
 	if needSwap:
-		# grab current coordinates of item
-		var pos = position
-		
 		# free item
 		queue_free()
 		
@@ -38,7 +35,16 @@ func interact(needSwap) -> SlotData:
 		queue_free()
 	
 	return slot_data
+	
+
+static func use(player: CharacterBody3D):
+	print("Ate Apple")
+	player.hungerLvl += 10
+
+	# Will return true to signal (consume / destroy item)	
+	return true
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

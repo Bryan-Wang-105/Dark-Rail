@@ -6,3 +6,4 @@ class_name ItemData
 @export var stackable: bool = false
 @export var texture: AtlasTexture
 @export var pathToAsset: String
+@export var pathToScript: String

@@ -12,7 +12,7 @@ func set_inventory_data(inventory_data: InventoryData, hotbar_pos: int) -> void:
 
 
 func populate_item_grid(slot_datas: Array[SlotData], hotbar_pos: int) -> void:
-	var index = 0
+	index = 0
 	
 	for child in item_grid.get_children():
 		child.queue_free()
@@ -36,7 +36,7 @@ func populate_item_grid(slot_datas: Array[SlotData], hotbar_pos: int) -> void:
 		
 		index += 1
 
-func highlight_slot(hotbar_pos: int, player_inventory: InventoryData) -> void:
+func highlight_slot(hotbar_pos: int) -> void:
 	var left
 	var right
 	
@@ -68,8 +68,4 @@ func highlight_slot(hotbar_pos: int, player_inventory: InventoryData) -> void:
 	
 	# Set the new style
 	slot.set("theme_override_styles/panel", new_style)
-	pass
-
-func empty_slot(hotbar_pos: int) -> void:
-	#item_grid[hotbar_pos] = null
 	pass

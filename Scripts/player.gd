@@ -6,6 +6,8 @@ extends CharacterBody3D
 @onready var item_lbl: Label = $item_lbl
 @onready var interact_ray: RayCast3D = $head/interact_ray
 @onready var camera: Camera3D = $head/Camera3D
+@onready var panel: Panel = $"../UI/Panel"
+@onready var hand: Node3D = $Hand
 
 # Movement Vars
 var SPEED = 5.0
@@ -16,6 +18,7 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 signal wheel_scroll
 signal drop_item
 signal update_inventory
+signal update_menu
 
 # Hotbar Vars
 var hotbar_pos = 0
@@ -27,6 +30,11 @@ var direction = Vector3.ZERO
 var mouse_sens = .0015
 var lerp_speed = 10.0
 
+# Tab Menu vars
+var tabVisible = false
+var perkBalance = 1
+var hungerLvl = 50
+
 func _ready() -> void:
 	#inventory_interface.set_player_inventory_data(inventory_data)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -35,7 +43,7 @@ func _ready() -> void:
 	interact_ray.connect("update_inventory", call_update)
 
 func _input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and panel.visible == false:
 		rotate_y(-event.relative.x * mouse_sens)
 		head.rotate_x(-event.relative.y * mouse_sens)
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-85),deg_to_rad(85))
@@ -57,6 +65,17 @@ func _physics_process(delta: float) -> void:
 
 	# Handle see inventory.
 	if Input.is_action_just_pressed("tab"):
+		emit_signal("update_menu")
+		
+		panel.visible = !tabVisible
+		tabVisible = !tabVisible
+		
+		if tabVisible:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+			velocity = Vector3(0,velocity.y,0)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		
 		print("Current Inventory:")
 		print(hotbar_pos)
 		print(inventory_data.slot_datas)
@@ -65,81 +84,95 @@ func _physics_process(delta: float) -> void:
 		else:
 			print("EMPTY")
 
-	# Handle drop.
-	if Input.is_action_just_pressed("drop"):
-		print("Dropping current item")
+		# Only do movement if not in tab menu
+	if panel.visible == false:
+		# Handle use item
+		if Input.is_action_just_pressed("use"):
+			if current_slot:
+				var use_item = load(current_slot.item_data.pathToScript)
+				
+				# if item should be destroyed
+				if use_item.use(self):
+					inventory_data.slot_datas[hotbar_pos] = null
+					emit_signal("update_inventory")
+				else:
+					pass
 		
-		if current_slot:
-			var drop_item = load(current_slot.item_data.pathToAsset)
-			var drop_node = drop_item.instantiate()
-			drop_node.position = interact_ray.get_drop_position()
-
-			# Get the camera's transform
-			var camera_transform = camera.global_transform
-
-			# Get the camera's forward vector (direction it is facing)
-			var camera_direction = -camera_transform.basis.z.normalized()
-			drop_node.linear_velocity = (camera_direction * 3) + (.65 * velocity)
+		# Handle drop.
+		if Input.is_action_just_pressed("drop"):
+			print("Dropping current item")
 			
-			get_parent().add_child(drop_node)
-		
-			inventory_data.slot_datas[hotbar_pos] = null
-			emit_signal("update_inventory")
+			if current_slot:
+				var toDrop_item = load(current_slot.item_data.pathToAsset)
+				var toDrop_node = toDrop_item.instantiate()
+				toDrop_node.position = interact_ray.get_drop_position()
 
-	# Scrolling
-	if Input.is_action_just_pressed("scroll_up"):
-		hotbar_pos += 1
-		if hotbar_pos > 5:
-			hotbar_pos = 0
-		
-		current_slot = inventory_data.slot_datas[hotbar_pos]
-		
-		print("\nHotbar Position: %s" % [hotbar_pos])
-		if current_slot:
-			print("Item at slot: %s" % current_slot.item_data.name)
-		else:
-			print("Item at slot: EMPTY")
-		
-		emit_signal("wheel_scroll")
+				# Get the camera's transform
+				var camera_transform = camera.global_transform
 
-	if Input.is_action_just_pressed("scroll_down"):
-		hotbar_pos -= 1
-		if hotbar_pos < 0:
-			hotbar_pos = 5 
-		
-		current_slot = inventory_data.slot_datas[hotbar_pos]
-		
-		print("\nHotbar Position: %s" % [hotbar_pos])
-		
-		if current_slot:
-			print("Item at slot: %s" % current_slot.item_data.name)
-		else:
-			print("Item at slot: EMPTY")
+				# Get the camera's forward vector (direction it is facing)
+				var camera_direction = -camera_transform.basis.z.normalized()
+				toDrop_node.linear_velocity = (camera_direction * 3) + (.65 * velocity)
+				
+				get_parent().add_child(toDrop_node)
 			
-		emit_signal("wheel_scroll")
+				inventory_data.slot_datas[hotbar_pos] = null
+				emit_signal("update_inventory")
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
- 
-	# Handle sprint
-	if Input.is_action_pressed("sprint") and is_on_floor():
-		SPEED = 8
-	
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
-	
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.z = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.z = move_toward(velocity.z, 0, SPEED)
-	
+		# Scrolling
+		if Input.is_action_just_pressed("scroll_up"):
+			hotbar_pos += 1
+			if hotbar_pos > 5:
+				hotbar_pos = 0
+			
+			current_slot = inventory_data.slot_datas[hotbar_pos]
+			
+			print("\nHotbar Position: %s" % [hotbar_pos])
+			if current_slot:
+				print("Item at slot: %s" % current_slot.item_data.name)
+			else:
+				print("Item at slot: EMPTY")
+			
+			emit_signal("wheel_scroll")
+
+		if Input.is_action_just_pressed("scroll_down"):
+			hotbar_pos -= 1
+			if hotbar_pos < 0:
+				hotbar_pos = 5
+			
+			current_slot = inventory_data.slot_datas[hotbar_pos]
+			
+			print("\nHotbar Position: %s" % [hotbar_pos])
+			
+			if current_slot:
+				print("Item at slot: %s" % current_slot.item_data.name)
+			else:
+				print("Item at slot: EMPTY")
+				
+			emit_signal("wheel_scroll")
+
+		# Handle jump.
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		 
+		# Handle sprint
+		if Input.is_action_pressed("sprint") and is_on_floor():
+			SPEED = 8
+			
+		# Get the input direction and handle the movement/deceleration.
+		# As good practice, you should replace UI actions with custom gameplay actions.
+		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		direction = lerp(direction, (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized(), delta*lerp_speed)
+			
+		if direction:
+			velocity.x = direction.x * SPEED
+			velocity.z = direction.z * SPEED
+		else:
+			velocity.x = move_toward(velocity.x, 0, SPEED)
+			velocity.z = move_toward(velocity.z, 0, SPEED)
+
 	if Input.is_action_just_pressed("pause"):
-		get_tree().quit()
+					get_tree().quit()
 
 	move_and_slide()
 
