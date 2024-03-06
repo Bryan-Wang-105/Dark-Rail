@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var item_lbl: Label = $item_lbl
 @onready var interact_ray: RayCast3D = $head/interact_ray
 @onready var camera: Camera3D = $head/Camera3D
-@onready var panel: Panel = $"../UI/Panel"
+@onready var panel: Panel = $"../UI/CharacterMenu/Panel"
 @onready var hand: Node3D = $Hand
 
 # Movement Vars
@@ -66,16 +66,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle see inventory.
 	if Input.is_action_just_pressed("tab"):
-		emit_signal("update_menu")
-		
-		panel.visible = !tabVisible
-		tabVisible = !tabVisible
-		
-		if tabVisible:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-			velocity = Vector3(0,velocity.y,0)
-		else:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		tab_menu()
 		
 		print("Current Inventory:")
 		print(hotbar_pos)
@@ -84,10 +75,6 @@ func _physics_process(delta: float) -> void:
 			print(current_slot.item_data.name)
 		else:
 			print("EMPTY")
-
-	if tabVisible:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
-		velocity = Vector3(0,velocity.y,0)
 
 		# Only do movement if not in tab menu
 	if tabVisible == false:
@@ -183,6 +170,54 @@ func _physics_process(delta: float) -> void:
 
 func call_update():
 	emit_signal("update_inventory")
+
+func tab_menu():
+	# Don't show menu if another menu is up
+	if tabVisible:
+		if panel.visible:
+			panel.visible = !tabVisible
+			toggle_tabVisible()
+		
+		
+	else:
+		emit_signal("update_menu")
+		
+		panel.visible = !tabVisible
+		toggle_tabVisible()
 	
+	pass
+
+# Handle mouse capturing logic
 func toggle_tabVisible():
 	tabVisible = !tabVisible
+	
+	if tabVisible:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
+		velocity = Vector3(0,velocity.y,0)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+
+
+func setHungerLvl(amount):
+	hungerLvl += amount
+	emit_signal("update_menu")
+
+func getHungerLvl():
+	#emit_signal("update_menu")
+	return hungerLvl
+
+func setFare(amount):
+	fare += amount
+	emit_signal("update_menu")
+
+func getFare():
+	#emit_signal("update_menu")
+	return fare
+
+func setPerkBalance(amount):
+	perkBalance += amount
+	emit_signal("update_menu")
+
+func getPerkBalance():
+	#emit_signal("update_menu")
+	return perkBalance

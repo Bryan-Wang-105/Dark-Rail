@@ -39,7 +39,7 @@ func interact(needSwap) -> SlotData:
 
 static func use(player: CharacterBody3D):
 	print("Cashed in one perk point")
-	player.perkBalance += 1
+	player.setPerkBalance(1)
 
 	# Will return true to signal (consume / destroy item)	
 	return true

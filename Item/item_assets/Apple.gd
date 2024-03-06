@@ -40,7 +40,7 @@ func interact(needSwap) -> SlotData:
 
 static func use(player: CharacterBody3D):
 	print("Ate Apple")
-	player.hungerLvl -= 10
+	player.setHungerLvl(-10)
 
 	# Will return true to signal (consume / destroy item)	
 	return true
