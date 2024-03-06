@@ -2,25 +2,37 @@ extends CharacterBody3D
 
 @onready var head: Node3D = $head
 @export var inventory_data: InventoryData
+@onready var hotbar_pos_lbl: Label = $hotbar_pos
+@onready var item_lbl: Label = $item_lbl
+@onready var interact_ray: RayCast3D = $head/interact_ray
+@onready var camera: Camera3D = $head/Camera3D
 
-
+# Movement Vars
 var SPEED = 5.0
 const JUMP_VELOCITY = 4.5
-
-signal wheel_scroll
-var hotbar_pos = 0
-
-# Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
+
+# Signals
+signal wheel_scroll
+signal drop_item
+signal update_inventory
+
+# Hotbar Vars
+var hotbar_pos = 0
+var current_slot = null
+
+# Camera stuff
+var capMouse = false
 var direction = Vector3.ZERO
 var mouse_sens = .0015
 var lerp_speed = 10.0
 
-var capMouse = false
-
 func _ready() -> void:
 	#inventory_interface.set_player_inventory_data(inventory_data)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	# update inventory signal
+	interact_ray.connect("update_inventory", call_update)
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -29,34 +41,80 @@ func _input(event):
 		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-85),deg_to_rad(85))
 
 func _physics_process(delta: float) -> void:
+	# Define current selected item on hotbar
+	current_slot = inventory_data.slot_datas[hotbar_pos]
+	
+	# UI UNTIL HIGHLIGHTING WORKS
+	hotbar_pos_lbl.text = "Hotbar Position = " + str(hotbar_pos)
+	if current_slot:
+		item_lbl.text = "Item at Position = " + str(current_slot.item_data.name)
+	else:
+		item_lbl.text = "Item at Position = EMPTY"
+	
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 
-		# Handle jump.
+	# Handle see inventory.
 	if Input.is_action_just_pressed("tab"):
 		print("Current Inventory:")
+		print(hotbar_pos)
 		print(inventory_data.slot_datas)
+		if current_slot:
+			print(current_slot.item_data.name)
+		else:
+			print("EMPTY")
 
-	if Input.is_action_just_pressed("scroll_up"):
+	# Handle drop.
+	if Input.is_action_just_pressed("drop"):
+		print("Dropping current item")
+		
+		if current_slot:
+			var drop_item = load(current_slot.item_data.pathToAsset)
+			var drop_node = drop_item.instantiate()
+			drop_node.position = interact_ray.get_drop_position()
+
+			# Get the camera's transform
+			var camera_transform = camera.global_transform
+
+			# Get the camera's forward vector (direction it is facing)
+			var camera_direction = -camera_transform.basis.z.normalized()
+			drop_node.linear_velocity = camera_direction * 3
+			
+			get_parent().add_child(drop_node)
+		
+			inventory_data.slot_datas[hotbar_pos] = null
+			emit_signal("update_inventory")
+
+	# Scrolling
+	if Input.is_action_just_pressed("scroll_down"):
 		hotbar_pos += 1
 		if hotbar_pos > 5:
 			hotbar_pos = 0
 		
-		print("\nHotbar Position: %s -- Item at slot: %s" % [hotbar_pos, inventory_data.slot_datas[hotbar_pos]])
-		if inventory_data.slot_datas[hotbar_pos]:
-			print(inventory_data.slot_datas[hotbar_pos].item_data.name)
+		current_slot = inventory_data.slot_datas[hotbar_pos]
+		
+		print("\nHotbar Position: %s" % [hotbar_pos])
+		if current_slot:
+			print("Item at slot: %s" % current_slot.item_data.name)
+		else:
+			print("Item at slot: EMPTY")
 		
 		emit_signal("wheel_scroll")
 
-	if Input.is_action_just_pressed("scroll_down"):
+	if Input.is_action_just_pressed("scroll_up"):
 		hotbar_pos -= 1
 		if hotbar_pos < 0:
-			hotbar_pos = 5
+			hotbar_pos = 5 
 		
-		print("\nHotbar Position: %s -- Item at slot: %s" % [hotbar_pos, inventory_data.slot_datas[hotbar_pos]])
-		if inventory_data.slot_datas[hotbar_pos]:
-			print(inventory_data.slot_datas[hotbar_pos].item_data.name)
+		current_slot = inventory_data.slot_datas[hotbar_pos]
+		
+		print("\nHotbar Position: %s" % [hotbar_pos])
+		
+		if current_slot:
+			print("Item at slot: %s" % current_slot.item_data.name)
+		else:
+			print("Item at slot: EMPTY")
 			
 		emit_signal("wheel_scroll")
 
@@ -84,3 +142,6 @@ func _physics_process(delta: float) -> void:
 		get_tree().quit()
 
 	move_and_slide()
+
+func call_update():
+	emit_signal("update_inventory")

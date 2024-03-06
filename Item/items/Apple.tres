@@ -13,3 +13,4 @@ name = "Apple"
 description = "A delicious apple"
 stackable = true
 texture = SubResource("AtlasTexture_jwprs")
+pathToAsset = "res://Item/item_assets/Apple.tscn"

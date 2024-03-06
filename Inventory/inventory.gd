@@ -29,3 +29,7 @@ func highlight_slot(hotbar_pos: int) -> void:
 	#print(current_slot.get_property_list())
 	#print(item_grid.get_children()[hotbar_pos].get_children())
 	pass
+
+func empty_slot(hotbar_pos: int) -> void:
+	#item_grid[hotbar_pos] = null
+	pass

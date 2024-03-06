@@ -1,0 +1,68 @@
+[gd_scene load_steps=14 format=3 uid="uid://c32je37dwa80u"]
+
+[ext_resource type="Script" path="res://Item/items/Apple.gd" id="1_64fwo"]
+[ext_resource type="Resource" uid="uid://mrnife3v7bd6" path="res://Item/items/Apple.tres" id="2_bbn8n"]
+[ext_resource type="Script" path="res://Inventory/slot_data.gd" id="3_2ms3a"]
+
+[sub_resource type="Resource" id="Resource_kg782"]
+script = ExtResource("3_2ms3a")
+item_data = ExtResource("2_bbn8n")
+quantity = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_ojc5b"]
+size = Vector3(0.005, 0.02, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j5iix"]
+albedo_color = Color(0.231373, 0.435294, 0.133333, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bdsmk"]
+size = Vector3(0.009, 0.1, 0.009)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4cgab"]
+albedo_color = Color(0.368627, 0.180392, 0.027451, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_giyfl"]
+size = Vector3(0.13, 0.12, 0.13)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47few"]
+albedo_color = Color(0.776471, 0.298039, 0.341176, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ihq8r"]
+radius = 0.1
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vw3ge"]
+albedo_color = Color(0.721569, 0.156863, 0.207843, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3t5gs"]
+radius = 0.12
+
+[node name="RigidBody3D" type="RigidBody3D"]
+script = ExtResource("1_64fwo")
+slot_data = SubResource("Resource_kg782")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.168954, 0, 0.985624, 0, 1, 0, -0.985624, 0, -0.168954, 0, 0.134798, 0)
+mesh = SubResource("BoxMesh_ojc5b")
+surface_material_override/0 = SubResource("StandardMaterial3D_j5iix")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D3"]
+transform = Transform3D(-0.162474, -0.0463432, -0.985624, -0.274295, 0.961646, 0, 0.947821, 0.270352, -0.168954, -0.00127084, -0.0385779, 0.00741371)
+mesh = SubResource("BoxMesh_bdsmk")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_4cgab")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D3"]
+transform = Transform3D(-0.168954, 0, -0.985624, 0, 1, 0, 0.985624, 0, -0.168954, 0, -0.173416, 0)
+mesh = SubResource("BoxMesh_giyfl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_47few")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D3"]
+transform = Transform3D(-0.168954, 0, -0.985624, 0, 1, 0, 0.985624, 0, -0.168954, 0, -0.134798, 0)
+mesh = SubResource("SphereMesh_ihq8r")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_vw3ge")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_3t5gs")

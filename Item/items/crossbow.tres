@@ -15,3 +15,4 @@ name = "Crossbow"
 description = "Shoots straight enough"
 stackable = false
 texture = SubResource("AtlasTexture_ngugt")
+pathToAsset = "res://Item/item_assets/crossbow.tscn"

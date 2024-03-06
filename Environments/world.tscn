@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=10 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
 [ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
 [ext_resource type="PackedScene" uid="uid://b0eb2yt6v71dc" path="res://Player_Related/player.tscn" id="2_oxyhy"]
 [ext_resource type="PackedScene" uid="uid://c6b23n88kl8yk" path="res://Inventory/inventory.tscn" id="3_npxwj"]
 [ext_resource type="Script" path="res://Inventory/Inventory_Interface.gd" id="4_0asnx"]
+[ext_resource type="PackedScene" uid="uid://c32je37dwa80u" path="res://Item/item_assets/Apple.tscn" id="6_vcgyr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -59,3 +60,6 @@ offset_right = 20.0
 offset_bottom = -38.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.879609, -20.3291)

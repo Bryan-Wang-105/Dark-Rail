@@ -1,11 +1,45 @@
 extends RayCast3D
 
+@onready var prompt = $Prompt
+@onready var player: CharacterBody3D = $"../.."
+@onready var camera: Camera3D = $"../Camera3D"
+
+signal update_inventory
+
+var needSwap = null
+var wasItem = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	add_exception(owner)
+	prompt.text = ""
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if is_colliding():
+		var interactable = get_collider()
+		#print(interactable.name)
+		
+		if interactable != null and interactable.has_method("interact"):
+			needSwap = player.current_slot != null
+			
+			prompt.text = interactable.get_prompt(needSwap)
+			
+			if Input.is_action_just_pressed("interact"):
+				wasItem = interactable.interact(needSwap)
+				
+				if wasItem:
+					player.inventory_data.slot_datas[player.hotbar_pos] = wasItem
+					emit_signal("update_inventory")
+		else:
+			prompt.text = ""
+		
+	else:
+		prompt.text = ""
+		
+func get_drop_position():
+	var direction = -camera.global_transform.basis.z
+	
+	return camera.global_position + direction
