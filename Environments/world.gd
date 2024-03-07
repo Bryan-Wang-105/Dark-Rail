@@ -38,6 +38,12 @@ func _ready() -> void:
 	# Update tab menu
 	_update_menus()
 
+func _exit_screen():
+	if char_menu_panel.visible:
+		char_menu_panel.visible = false
+	elif market_menu_panel.visible:
+		market_menu_panel.visible = false
+
 func _update_menus():
 	char_menu_perk_balance.text = "Perk Balance: " + str(player.getPerkBalance())
 	char_menu_hunger.text = "Hunger Level: " + str(player.getHungerLvl())

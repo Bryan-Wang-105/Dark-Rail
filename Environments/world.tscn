@@ -232,6 +232,70 @@ offset_bottom = 103.0
 theme_override_fonts/font = ExtResource("7_h3qir")
 text = "Fare:"
 
+[node name="Panel" type="Panel" parent="UI/MarketMenu/Panel"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 122.0
+offset_right = 416.0
+offset_bottom = 482.0
+
+[node name="Durability" type="Label" parent="UI/MarketMenu/Panel/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 93.0
+offset_bottom = 39.0
+text = "Durability"
+
+[node name="DurabilityPage" type="Panel" parent="UI/MarketMenu/Panel/Panel/Durability"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 40.0
+offset_right = 368.0
+offset_bottom = 344.0
+
+[node name="Combat" type="Label" parent="UI/MarketMenu/Panel/Panel"]
+offset_left = 112.0
+offset_top = 16.0
+offset_right = 173.0
+offset_bottom = 39.0
+text = "Combat"
+
+[node name="DurabilityPage" type="PanelContainer" parent="UI/MarketMenu/Panel/Panel/Combat"]
+visible = false
+offset_left = -112.0
+offset_top = 32.0
+offset_right = 272.0
+offset_bottom = 344.0
+
+[node name="Scavenger" type="Label" parent="UI/MarketMenu/Panel/Panel"]
+offset_left = 200.0
+offset_top = 16.0
+offset_right = 279.0
+offset_bottom = 39.0
+text = "Scavenger"
+
+[node name="DurabilityPage" type="PanelContainer" parent="UI/MarketMenu/Panel/Panel/Scavenger"]
+visible = false
+offset_left = -200.0
+offset_top = 32.0
+offset_right = 184.0
+offset_bottom = 344.0
+
+[node name="Support" type="Label" parent="UI/MarketMenu/Panel/Panel"]
+offset_left = 304.0
+offset_top = 16.0
+offset_right = 366.0
+offset_bottom = 39.0
+text = "Support"
+
+[node name="DurabilityPage" type="PanelContainer" parent="UI/MarketMenu/Panel/Panel/Support"]
+visible = false
+offset_left = -304.0
+offset_top = 32.0
+offset_right = 80.0
+offset_bottom = 344.0
+
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.879609, -20.3291)
 

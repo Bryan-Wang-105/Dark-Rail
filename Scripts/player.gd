@@ -164,7 +164,13 @@ func _physics_process(delta: float) -> void:
 			velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	if Input.is_action_just_pressed("pause"):
-					get_tree().quit()
+		if tabVisible:
+			var world = get_parent()
+			world._exit_screen()
+			toggle_tabVisible()
+			print("Close Menu")
+		else:
+			get_tree().quit()
 
 	move_and_slide()
 
@@ -181,7 +187,8 @@ func tab_menu():
 		
 	else:
 		emit_signal("update_menu")
-		
+		print("A")
+		print(tabVisible)
 		panel.visible = !tabVisible
 		toggle_tabVisible()
 	
@@ -189,8 +196,12 @@ func tab_menu():
 
 # Handle mouse capturing logic
 func toggle_tabVisible():
+	print("B")
+	print(tabVisible)
 	tabVisible = !tabVisible
-	
+
+	print(tabVisible)
+
 	if tabVisible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)
 		velocity = Vector3(0,velocity.y,0)

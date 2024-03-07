@@ -28,8 +28,12 @@ func get_prompt():
 	return "Press E to browse wares"
 	
 func interact():
-	emit_signal("update_menu")
+	toggle_tabVisible()
 	
+	print("In Store")
+
+func toggle_tabVisible():
+	emit_signal("update_menu")
 	player = $"../Player"
 	mark_menu_panel = $"../UI/MarketMenu/Panel"
 	
@@ -38,8 +42,6 @@ func interact():
 	print(player.tabVisible)
 	
 	mark_menu_panel.visible = !mark_menu_panel.visible
-	
-	print("In Store")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

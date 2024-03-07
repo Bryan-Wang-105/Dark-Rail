@@ -5,4 +5,4 @@ load_path = "res://.godot/imported/#1 - Transparent Icons.png-6b71a2f1321d77d16b
 
 [resource]
 atlas = SubResource("CompressedTexture2D_tgnws")
-region = Rect2(0, 416, 32, 32)
+region = Rect2(160, 96, 32, 32)

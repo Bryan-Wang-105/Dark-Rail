@@ -1,10 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6dsvwsrmvmid"]
+[gd_scene load_steps=13 format=3 uid="uid://c6dsvwsrmvmid"]
 
 [ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://Assets/characters/gobot/gobot_skin.tscn" id="1_3l8e0"]
 [ext_resource type="Script" path="res://Environments/market.gd" id="1_oukba"]
 [ext_resource type="PackedScene" uid="uid://d4asmyj88segt" path="res://Assets/Props/weapon_rack.tscn" id="2_fx2ik"]
-[ext_resource type="Script" path="res://Environments/Panel.gd" id="4_85d8a"]
-[ext_resource type="FontFile" uid="uid://c36uj27nn71j1" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="5_wbccx"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ll1m7"]
 size = Vector3(4, 1, 0.5)
@@ -34,15 +32,6 @@ albedo_color = Color(0.647059, 0.129412, 0.266667, 1)
 size = Vector3(3.97949, 2.47705, 3.16748)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rjdqu"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvjx3"]
-bg_color = Color(0.498039, 0.223529, 0.172549, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-border_blend = true
 
 [node name="Market" type="RigidBody3D"]
 mass = 1000.0
@@ -122,62 +111,3 @@ skeleton = NodePath("../..")
 
 [node name="WeaponRack" parent="." instance=ExtResource("2_fx2ik")]
 transform = Transform3D(2.35169, 0, 0, 0, 2.4095, 0, 0, 0, 1.00307, 0.439686, 1.21251, -0.854097)
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -224.0
-offset_top = -252.0
-offset_right = 224.0
-offset_bottom = 260.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 4
-theme_override_styles/panel = SubResource("StyleBoxFlat_wvjx3")
-script = ExtResource("4_85d8a")
-
-[node name="Market" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -152.0
-offset_top = 24.0
-offset_right = 150.0
-offset_bottom = 51.0
-grow_horizontal = 2
-theme_override_fonts/font = ExtResource("5_wbccx")
-theme_override_font_sizes/font_size = 20
-text = "MARKET"
-horizontal_alignment = 1
-
-[node name="PerkBalance" type="Label" parent="Panel"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -192.0
-offset_top = -176.0
-offset_right = -59.0
-offset_bottom = -144.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/font = ExtResource("5_wbccx")
-theme_override_font_sizes/font_size = 16
-text = "Perk Balance: "
-horizontal_alignment = 1
-
-[node name="Fare" type="Label" parent="Panel"]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 80.0
-offset_right = 373.0
-offset_bottom = 103.0
-theme_override_fonts/font = ExtResource("5_wbccx")
-text = "Fare:"

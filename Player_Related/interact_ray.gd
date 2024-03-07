@@ -18,32 +18,33 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if is_colliding():
-		var interactable = get_collider()
-		#print(interactable.name)
-		
-		if interactable != null and interactable.has_method("interact"):
-			needSwap = player.current_slot != null
+	if player.tabVisible == false:
+		if is_colliding():
+			var interactable = get_collider()
+			#print(interactable.name)
 			
-			if interactable.item:
-				prompt.text = interactable.get_prompt(needSwap)
+			if interactable != null and interactable.has_method("interact"):
+				needSwap = player.current_slot != null
 				
-				if Input.is_action_just_pressed("interact"):
-					wasItem = interactable.interact(needSwap)
+				if interactable.item:
+					prompt.text = interactable.get_prompt(needSwap)
 					
-					if wasItem:
-						player.inventory_data.slot_datas[player.hotbar_pos] = wasItem
-						emit_signal("update_inventory")
+					if Input.is_action_just_pressed("interact"):
+						wasItem = interactable.interact(needSwap)
+						
+						if wasItem:
+							player.inventory_data.slot_datas[player.hotbar_pos] = wasItem
+							emit_signal("update_inventory")
+				else:
+					prompt.text = interactable.get_prompt()
+					if Input.is_action_just_pressed("interact"):
+						interactable.interact()
+						
 			else:
-				prompt.text = interactable.get_prompt()
-				if Input.is_action_just_pressed("interact"):
-					interactable.interact()
-					
+				prompt.text = ""
+			
 		else:
 			prompt.text = ""
-		
-	else:
-		prompt.text = ""
 		
 func get_drop_position():
 	var direction = -camera.global_transform.basis.z
