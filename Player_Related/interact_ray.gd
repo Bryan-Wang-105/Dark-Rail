@@ -18,7 +18,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if player.tabVisible == false:
+	#if player.tabVisible == false:
 		if is_colliding():
 			var interactable = get_collider()
 			#print(interactable.name)

@@ -36,7 +36,14 @@ var perkBalance = 1
 var hungerLvl = 50
 var fare = 0
 
+# Active Perks
+var perksActive = []
+
 func _ready() -> void:
+	perksActive.resize(16)
+	for i in range(perksActive.size()):
+		perksActive[i] = 0
+	
 	#inventory_interface.set_player_inventory_data(inventory_data)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
@@ -187,8 +194,8 @@ func tab_menu():
 		
 	else:
 		emit_signal("update_menu")
-		print("A")
-		print(tabVisible)
+		#print("A")
+		#print(tabVisible)
 		panel.visible = !tabVisible
 		toggle_tabVisible()
 	
@@ -196,8 +203,8 @@ func tab_menu():
 
 # Handle mouse capturing logic
 func toggle_tabVisible():
-	print("B")
-	print(tabVisible)
+	#print("B")
+	#print(tabVisible)
 	tabVisible = !tabVisible
 
 	print(tabVisible)
@@ -208,6 +215,18 @@ func toggle_tabVisible():
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
+func print_stats():
+	print("hungerLvl: " + str(getHungerLvl()))
+	print("fare: " + str(getFare()))
+	print("perk: " + str(getPerkBalance()))
+	print("perksActive: ")
+	print(perksActive)
+
+func setPerkActive(index):
+	perksActive[index] = 1
+
+func getPerksActive():
+	return perksActive
 
 func setHungerLvl(amount):
 	hungerLvl += amount

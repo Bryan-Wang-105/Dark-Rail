@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=42 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
 [ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
@@ -24,8 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://cd1jkwa1ftf1w" path="res://Assets/perkPictures/Durability/diamonds.png" id="19_hmudn"]
 [ext_resource type="Texture2D" uid="uid://c2flfygyfoe0a" path="res://Assets/perkPictures/Durability/potions.png" id="20_dw0g3"]
 [ext_resource type="Texture2D" uid="uid://cmpjfeitwgyep" path="res://Assets/perkPictures/Durability/potions on table.png" id="21_56bge"]
+[ext_resource type="FontFile" uid="uid://dd1y0q0r6sqmm" path="res://Assets/Fonts/lemonMilkFont/LEMONMILK-LightItalic.otf" id="21_ybf6r"]
 [ext_resource type="Texture2D" uid="uid://dxbt18var80m0" path="res://Assets/perkPictures/Durability/heal kit.png" id="22_qngpf"]
 [ext_resource type="Texture2D" uid="uid://c6nyyyobwwsml" path="res://Assets/perkPictures/Durability/coins.png" id="23_jixw2"]
+[ext_resource type="FontFile" uid="uid://cam3miybf48cn" path="res://Assets/Fonts/lemonMilkFont/LEMONMILK-Bold.otf" id="23_of61f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -287,6 +289,7 @@ offset_bottom = 34.0
 text = "Support"
 
 [node name="SupportButton" type="Button" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support"]
+layout_mode = 0
 offset_left = -16.0
 offset_top = -11.0
 offset_right = 80.0
@@ -393,6 +396,7 @@ text = "Durability"
 horizontal_alignment = 1
 
 [node name="DurabilityButton" type="Button" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Durability"]
+layout_mode = 0
 offset_top = -11.0
 offset_right = 104.0
 offset_bottom = 37.0
@@ -496,6 +500,7 @@ offset_bottom = 34.0
 text = "Combat"
 
 [node name="CombatButton" type="Button" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat"]
+layout_mode = 0
 offset_left = -8.0
 offset_top = -11.0
 offset_right = 72.0
@@ -602,6 +607,7 @@ text = "Scavenger"
 horizontal_alignment = 1
 
 [node name="ScavengerButton" type="Button" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger"]
+layout_mode = 0
 offset_left = -8.0
 offset_top = -11.0
 offset_right = 96.0
@@ -636,6 +642,37 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_d810x")
 text = "Purchase"
 
+[node name="Panel" type="Panel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkOne"]
+process_mode = 4
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+layout_mode = 0
+offset_left = 320.0
+offset_top = 304.0
+offset_right = 648.0
+offset_bottom = 408.0
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkOne/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_h3qir")
+theme_override_fonts/bold_font = ExtResource("23_of61f")
+theme_override_fonts/italics_font = ExtResource("21_ybf6r")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/italics_font_size = 11
+bbcode_enabled = true
+text = "[b][u]Foul Scavenger [/u][/b]
+Filthy creature of the skies, the vulture feasts upon the rancid refuse that even the lowliest maggots spurn.
+
+[i](10% increased chance of loot spawn when alone)[/i]"
+
 [node name="PerkTwo" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
 layout_mode = 0
 offset_left = 237.0
@@ -654,6 +691,37 @@ theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qp7x8")
 text = "Purchase"
 
+[node name="Panel" type="Panel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkTwo"]
+process_mode = 4
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+layout_mode = 0
+offset_left = 504.0
+offset_top = 304.0
+offset_right = 840.0
+offset_bottom = 408.0
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkTwo/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 336.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_h3qir")
+theme_override_fonts/bold_font = ExtResource("23_of61f")
+theme_override_fonts/italics_font = ExtResource("21_ybf6r")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/italics_font_size = 11
+bbcode_enabled = true
+text = "[b][u]well traveled[/u][/b]
+The advent of the locomotion brought forth a boon of personal prosperity, through newly spun webs of trade and commerce.
+
+[i](Gain a 10% increase in FARE every departure)[/i]"
+
 [node name="PerkThree" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
 layout_mode = 0
 offset_left = 56.0
@@ -671,6 +739,37 @@ offset_bottom = 128.0
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qp7x8")
 text = "Purchase"
+
+[node name="Panel" type="Panel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkThree"]
+process_mode = 4
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+layout_mode = 0
+offset_left = 320.0
+offset_top = 456.0
+offset_right = 648.0
+offset_bottom = 552.0
+mouse_filter = 2
+
+[node name="Label" type="RichTextLabel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkThree/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 96.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_h3qir")
+theme_override_fonts/bold_font = ExtResource("23_of61f")
+theme_override_fonts/italics_font = ExtResource("21_ybf6r")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/italics_font_size = 11
+bbcode_enabled = true
+text = "[b][u]Corrupt[/u][/b]
+The insatiable hunger for wealth breeds a darkness that consumes souls, twisting hearts into shadows of their former selves.
+
+[i](all king coins will give two perk points now)[/i]"
 
 [node name="PerkFour" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
 layout_mode = 0
@@ -691,6 +790,37 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_qp7x8")
 text = "Purchase
 "
 
+[node name="Panel" type="Panel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkFour"]
+process_mode = 4
+visible = false
+self_modulate = Color(0, 0, 0, 1)
+top_level = true
+layout_mode = 0
+offset_left = 504.0
+offset_top = 456.0
+offset_right = 832.0
+offset_bottom = 560.0
+mouse_filter = 2
+
+[node name="Label2" type="RichTextLabel" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkFour/Panel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 320.0
+offset_bottom = 112.0
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("7_h3qir")
+theme_override_fonts/bold_font = ExtResource("23_of61f")
+theme_override_fonts/italics_font = ExtResource("21_ybf6r")
+theme_override_font_sizes/normal_font_size = 10
+theme_override_font_sizes/bold_font_size = 10
+theme_override_font_sizes/italics_font_size = 11
+bbcode_enabled = true
+text = "[b][u]Crown Jewel[/u][/b]
+Within the depths of stones lies a cursed allure, ensnaring the souls of men in a web of greed and deceit.
+
+[i](gain 5% chance per stop to spawn a crown jewel)[/i]"
+
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.32908, 19.8951)
 
@@ -700,7 +830,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08166, 7, 20.5783)
 [node name="Market" parent="." instance=ExtResource("10_hg4uw")]
 transform = Transform3D(-0.999972, 0, 0.00750488, 0, 1, 0, -0.00750488, 0, -0.999972, 0, 0, 22.0611)
 
+[node name="KingCoin2" parent="." instance=ExtResource("9_3lib6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42016, 7, 20.5783)
+
 [connection signal="pressed" from="UI/MarketMenu/Panel/Panel/SupportTab/Support/SupportButton" to="UI/MarketMenu" method="_on_support_button_pressed"]
 [connection signal="pressed" from="UI/MarketMenu/Panel/Panel/DurabilityTab/Durability/DurabilityButton" to="UI/MarketMenu" method="_on_durability_button_pressed"]
 [connection signal="pressed" from="UI/MarketMenu/Panel/Panel/CombatTab/Combat/CombatButton" to="UI/MarketMenu" method="_on_combat_button_pressed"]
 [connection signal="pressed" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/ScavengerButton" to="UI/MarketMenu" method="_on_scavenge_button_pressed"]
+[connection signal="mouse_entered" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkOne" to="UI/MarketMenu" method="_on_scavenge_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkOne" to="UI/MarketMenu" method="_on_scavenge_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkTwo" to="UI/MarketMenu" method="_on_scavenge1_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkTwo" to="UI/MarketMenu" method="_on_scavenge1_mouse_exited"]
+[connection signal="mouse_entered" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkThree" to="UI/MarketMenu" method="_on_scavenge2_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkThree" to="UI/MarketMenu" method="_on_scavenge2_mouse_exited"]
+[connection signal="pressed" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkThree/PerkThreeButton" to="UI/MarketMenu" method="_scavenge2_button_pressed"]
+[connection signal="mouse_entered" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkFour" to="UI/MarketMenu" method="_on_scavenge3_mouse_entered"]
+[connection signal="mouse_exited" from="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkFour" to="UI/MarketMenu" method="_on_scavenge3_mouse_exited"]
