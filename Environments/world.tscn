@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=39 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
 [ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
@@ -8,8 +8,24 @@
 [ext_resource type="Script" path="res://Environments/Panel.gd" id="6_tojry"]
 [ext_resource type="PackedScene" uid="uid://c32je37dwa80u" path="res://Item/item_assets/Apple.tscn" id="6_vcgyr"]
 [ext_resource type="FontFile" uid="uid://c36uj27nn71j1" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="7_h3qir"]
+[ext_resource type="Texture2D" uid="uid://bvb83pqxmj5eg" path="res://Assets/perkPictures/Durability/strength.png" id="8_dwbe1"]
+[ext_resource type="Texture2D" uid="uid://chgyivrhlkeuo" path="res://Assets/perkPictures/Durability/Armor (2).png" id="9_0a41g"]
 [ext_resource type="PackedScene" uid="uid://d1buffo3ps52l" path="res://Item/item_assets/KingsCoin.tscn" id="9_3lib6"]
+[ext_resource type="Texture2D" uid="uid://5bfeklgeltff" path="res://Assets/perkPictures/Durability/Shield (2).png" id="10_c8n1x"]
 [ext_resource type="PackedScene" uid="uid://c6dsvwsrmvmid" path="res://Environments/market.tscn" id="10_hg4uw"]
+[ext_resource type="Texture2D" uid="uid://djtyuikcjfp81" path="res://Assets/perkPictures/Durability/Train (2).png" id="11_gfbna"]
+[ext_resource type="Texture2D" uid="uid://d12kql6uekhas" path="res://Assets/perkPictures/Durability/brass knuckles.png" id="12_hrdqy"]
+[ext_resource type="Texture2D" uid="uid://d0fv4lg5cp120" path="res://Assets/perkPictures/Durability/Guns.png" id="13_5iscv"]
+[ext_resource type="Texture2D" uid="uid://bttpdhs8onw1a" path="res://Assets/perkPictures/Durability/sword.png" id="14_fgftp"]
+[ext_resource type="Texture2D" uid="uid://chslbi71351v1" path="res://Assets/perkPictures/Durability/archery.png" id="15_1kign"]
+[ext_resource type="Texture2D" uid="uid://ofvptbf4r1x5" path="res://Assets/perkPictures/Durability/vulture.png" id="16_o6d3d"]
+[ext_resource type="Texture2D" uid="uid://b60gufrchv5g2" path="res://Assets/perkPictures/Durability/train.png" id="17_pcw2h"]
+[ext_resource type="Texture2D" uid="uid://baw340c4xscyg" path="res://Assets/perkPictures/Durability/gold.png" id="18_ku2bc"]
+[ext_resource type="Texture2D" uid="uid://cd1jkwa1ftf1w" path="res://Assets/perkPictures/Durability/diamonds.png" id="19_hmudn"]
+[ext_resource type="Texture2D" uid="uid://c2flfygyfoe0a" path="res://Assets/perkPictures/Durability/potions.png" id="20_dw0g3"]
+[ext_resource type="Texture2D" uid="uid://cmpjfeitwgyep" path="res://Assets/perkPictures/Durability/potions on table.png" id="21_56bge"]
+[ext_resource type="Texture2D" uid="uid://dxbt18var80m0" path="res://Assets/perkPictures/Durability/heal kit.png" id="22_qngpf"]
+[ext_resource type="Texture2D" uid="uid://c6nyyyobwwsml" path="res://Assets/perkPictures/Durability/coins.png" id="23_jixw2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -41,6 +57,20 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(0, 0, 0, 1)
 border_blend = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_by7dc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2kdmw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gayxp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dtplk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ht3cs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wv3ad"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6bufj"]
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_xdfob")
@@ -239,68 +269,398 @@ offset_top = 122.0
 offset_right = 416.0
 offset_bottom = 482.0
 
-[node name="Durability" type="Label" parent="UI/MarketMenu/Panel/Panel"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = 93.0
-offset_bottom = 39.0
-text = "Durability"
+[node name="ScavengeTab" type="ColorRect" parent="UI/MarketMenu/Panel/Panel"]
+offset_right = 104.0
+offset_bottom = 48.0
+color = Color(0.368627, 0.619608, 0.768627, 0.509804)
 
-[node name="DurabilityPage" type="Panel" parent="UI/MarketMenu/Panel/Panel/Durability"]
+[node name="Scavenger" type="Label" parent="UI/MarketMenu/Panel/Panel/ScavengeTab"]
 layout_mode = 0
-offset_left = -16.0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 96.0
+offset_bottom = 34.0
+text = "Scavenger"
+horizontal_alignment = 1
+
+[node name="ScavengerButton" type="Button" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger"]
+offset_left = -8.0
+offset_top = -11.0
+offset_right = 96.0
+offset_bottom = 37.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_by7dc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2kdmw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gayxp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dtplk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ht3cs")
+
+[node name="Control" type="Control" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -8.0
 offset_top = 40.0
-offset_right = 368.0
-offset_bottom = 344.0
+offset_right = 376.0
+offset_bottom = 349.0
 
-[node name="Combat" type="Label" parent="UI/MarketMenu/Panel/Panel"]
-offset_left = 112.0
-offset_top = 16.0
-offset_right = 173.0
-offset_bottom = 39.0
+[node name="PerkOne" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 21.0
+offset_right = 152.0
+offset_bottom = 117.0
+texture = ExtResource("16_o6d3d")
+expand_mode = 4
+
+[node name="PerkOneButton" type="Button" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkOne"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wv3ad")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6bufj")
+text = "Purchase"
+
+[node name="PerkTwo" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
+offset_left = 237.0
+offset_top = 21.0
+offset_right = 333.0
+offset_bottom = 117.0
+texture = ExtResource("17_pcw2h")
+expand_mode = 4
+
+[node name="PerkTwoButton" type="Button" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkTwo"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wv3ad")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6bufj")
+text = "Purchase"
+
+[node name="PerkThree" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
+offset_left = 56.0
+offset_top = 165.0
+offset_right = 152.0
+offset_bottom = 261.0
+texture = ExtResource("18_ku2bc")
+expand_mode = 4
+
+[node name="PerkThreeButton" type="Button" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkThree"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wv3ad")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6bufj")
+text = "Purchase"
+
+[node name="PerkFour" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control"]
+offset_left = 237.0
+offset_top = 165.0
+offset_right = 333.0
+offset_bottom = 261.0
+texture = ExtResource("19_hmudn")
+expand_mode = 4
+
+[node name="PerkFourButton" type="Button" parent="UI/MarketMenu/Panel/Panel/ScavengeTab/Scavenger/Control/PerkFour"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wv3ad")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6bufj")
+text = "Purchase
+"
+
+[node name="CombatTab" type="ColorRect" parent="UI/MarketMenu/Panel/Panel"]
+offset_left = 104.0
+offset_right = 184.0
+offset_bottom = 48.0
+color = Color(0.368627, 0.619608, 0.768627, 0.254902)
+
+[node name="CombatButton" type="Button" parent="UI/MarketMenu/Panel/Panel/CombatTab"]
+offset_right = 80.0
+offset_bottom = 48.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_by7dc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2kdmw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gayxp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dtplk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ht3cs")
+
+[node name="Combat" type="Label" parent="UI/MarketMenu/Panel/Panel/CombatTab"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 11.0
+offset_right = 69.0
+offset_bottom = 34.0
 text = "Combat"
 
-[node name="DurabilityPage" type="PanelContainer" parent="UI/MarketMenu/Panel/Panel/Combat"]
-visible = false
+[node name="Control" type="Control" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat"]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -112.0
-offset_top = 32.0
+offset_top = 40.0
 offset_right = 272.0
-offset_bottom = 344.0
+offset_bottom = 349.0
 
-[node name="Scavenger" type="Label" parent="UI/MarketMenu/Panel/Panel"]
-offset_left = 200.0
-offset_top = 16.0
-offset_right = 279.0
-offset_bottom = 39.0
-text = "Scavenger"
+[node name="PerkOne" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 21.0
+offset_right = 152.0
+offset_bottom = 117.0
+texture = ExtResource("12_hrdqy")
+expand_mode = 4
 
-[node name="DurabilityPage" type="PanelContainer" parent="UI/MarketMenu/Panel/Panel/Scavenger"]
-visible = false
-offset_left = -200.0
-offset_top = 32.0
-offset_right = 184.0
-offset_bottom = 344.0
+[node name="PerkOneButton" type="Button" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control/PerkOne"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
 
-[node name="Support" type="Label" parent="UI/MarketMenu/Panel/Panel"]
-offset_left = 304.0
-offset_top = 16.0
-offset_right = 366.0
-offset_bottom = 39.0
+[node name="PerkTwo" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control"]
+offset_left = 237.0
+offset_top = 21.0
+offset_right = 333.0
+offset_bottom = 117.0
+texture = ExtResource("13_5iscv")
+expand_mode = 4
+
+[node name="PerkTwoButton" type="Button" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control/PerkTwo"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkThree" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control"]
+offset_left = 56.0
+offset_top = 165.0
+offset_right = 152.0
+offset_bottom = 261.0
+texture = ExtResource("14_fgftp")
+expand_mode = 4
+
+[node name="PerkThreeButton" type="Button" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control/PerkThree"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkFour" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control"]
+offset_left = 237.0
+offset_top = 165.0
+offset_right = 333.0
+offset_bottom = 261.0
+texture = ExtResource("15_1kign")
+expand_mode = 4
+
+[node name="PerkFourButton" type="Button" parent="UI/MarketMenu/Panel/Panel/CombatTab/Combat/Control/PerkFour"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase
+"
+
+[node name="DurabilityTab" type="ColorRect" parent="UI/MarketMenu/Panel/Panel"]
+layout_mode = 0
+offset_left = 184.0
+offset_right = 288.0
+offset_bottom = 48.0
+color = Color(0.368627, 0.619608, 0.768627, 0.254902)
+
+[node name="DurabilityButton" type="Button" parent="UI/MarketMenu/Panel/Panel/DurabilityTab"]
+layout_mode = 0
+offset_right = 104.0
+offset_bottom = 48.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_by7dc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2kdmw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gayxp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dtplk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ht3cs")
+
+[node name="Durability" type="Label" parent="UI/MarketMenu/Panel/Panel/DurabilityTab"]
+layout_mode = 0
+offset_top = 11.0
+offset_right = 104.0
+offset_bottom = 34.0
+text = "Durability"
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="UI/MarketMenu/Panel/Panel/DurabilityTab"]
+anchors_preset = 0
+offset_left = -184.0
+offset_top = 51.0
+offset_right = 200.0
+offset_bottom = 355.0
+
+[node name="PerkOne" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 21.0
+offset_right = 152.0
+offset_bottom = 117.0
+texture = ExtResource("8_dwbe1")
+expand_mode = 4
+
+[node name="PerkOneButton" type="Button" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control/PerkOne"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkTwo" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control"]
+offset_left = 237.0
+offset_top = 21.0
+offset_right = 333.0
+offset_bottom = 117.0
+texture = ExtResource("9_0a41g")
+expand_mode = 4
+
+[node name="PerkTwoButton" type="Button" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control/PerkTwo"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkThree" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control"]
+offset_left = 56.0
+offset_top = 165.0
+offset_right = 152.0
+offset_bottom = 261.0
+texture = ExtResource("10_c8n1x")
+expand_mode = 4
+
+[node name="PerkThreeButton" type="Button" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control/PerkThree"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkFour" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control"]
+offset_left = 237.0
+offset_top = 165.0
+offset_right = 333.0
+offset_bottom = 261.0
+texture = ExtResource("11_gfbna")
+expand_mode = 4
+
+[node name="PerkFourButton" type="Button" parent="UI/MarketMenu/Panel/Panel/DurabilityTab/Control/PerkFour"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase
+"
+
+[node name="SupportTab" type="ColorRect" parent="UI/MarketMenu/Panel/Panel"]
+offset_left = 288.0
+offset_right = 384.0
+offset_bottom = 48.0
+color = Color(0.368627, 0.619608, 0.768627, 0.254902)
+
+[node name="SupportButton" type="Button" parent="UI/MarketMenu/Panel/Panel/SupportTab"]
+offset_right = 96.0
+offset_bottom = 48.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_by7dc")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_2kdmw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_gayxp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_dtplk")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ht3cs")
+
+[node name="Support" type="Label" parent="UI/MarketMenu/Panel/Panel/SupportTab"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 11.0
+offset_right = 78.0
+offset_bottom = 34.0
 text = "Support"
 
-[node name="DurabilityPage" type="PanelContainer" parent="UI/MarketMenu/Panel/Panel/Support"]
-visible = false
+[node name="Control" type="Control" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support"]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -304.0
-offset_top = 32.0
+offset_top = 40.0
 offset_right = 80.0
-offset_bottom = 344.0
+offset_bottom = 349.0
+
+[node name="PerkOne" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 21.0
+offset_right = 152.0
+offset_bottom = 117.0
+texture = ExtResource("20_dw0g3")
+expand_mode = 4
+
+[node name="PerkOneButton" type="Button" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control/PerkOne"]
+layout_mode = 0
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkTwo" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control"]
+offset_left = 237.0
+offset_top = 21.0
+offset_right = 333.0
+offset_bottom = 117.0
+texture = ExtResource("21_56bge")
+expand_mode = 4
+
+[node name="PerkTwoButton" type="Button" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control/PerkTwo"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkThree" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control"]
+offset_left = 56.0
+offset_top = 165.0
+offset_right = 152.0
+offset_bottom = 261.0
+texture = ExtResource("22_qngpf")
+expand_mode = 4
+
+[node name="PerkThreeButton" type="Button" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control/PerkThree"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase"
+
+[node name="PerkFour" type="TextureRect" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control"]
+offset_left = 237.0
+offset_top = 165.0
+offset_right = 333.0
+offset_bottom = 261.0
+texture = ExtResource("23_jixw2")
+expand_mode = 4
+
+[node name="PerkFourButton" type="Button" parent="UI/MarketMenu/Panel/Panel/SupportTab/Support/Control/PerkFour"]
+offset_top = 104.0
+offset_right = 96.0
+offset_bottom = 128.0
+theme_override_font_sizes/font_size = 12
+text = "Purchase
+"
 
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.879609, -20.3291)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.32908, 19.8951)
 
-[node name="RigidBody3D" parent="." instance=ExtResource("9_3lib6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+[node name="KingCoin" parent="." instance=ExtResource("9_3lib6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08166, 7, 20.5783)
 
 [node name="Market" parent="." instance=ExtResource("10_hg4uw")]
-transform = Transform3D(-0.998383, 0, -0.0568496, 0, 1, 0, 0.0568496, 0, -0.998383, 0, 0, 22.0611)
+transform = Transform3D(-0.999972, 0, 0.00750488, 0, 1, 0, -0.00750488, 0, -0.999972, 0, 0, 22.0611)

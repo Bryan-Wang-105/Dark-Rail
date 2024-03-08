@@ -31,7 +31,7 @@ albedo_color = Color(0.862745, 0.521569, 0, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42l3v"]
 albedo_color = Color(0.32549, 0.184314, 0.486275, 1)
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="KingCoin" type="RigidBody3D"]
 script = ExtResource("1_3lwc1")
 slot_data = SubResource("Resource_1i6op")
 
