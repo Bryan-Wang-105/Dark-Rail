@@ -30,16 +30,16 @@ func get_prompt():
 func interact():
 	toggle_tabVisible()
 	
-	print("In Store")
+	#print("In Store")
 
 func toggle_tabVisible():
 	emit_signal("update_menu")
 	player = $"../Player"
 	mark_menu_panel = $"../UI/MarketMenu/Panel"
 	
-	print(player.tabVisible)
+	#print(player.tabVisible)
 	player.toggle_tabVisible()
-	print(player.tabVisible)
+	#print(player.tabVisible)
 	
 	mark_menu_panel.visible = !mark_menu_panel.visible
 

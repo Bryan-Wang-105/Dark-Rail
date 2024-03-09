@@ -207,7 +207,7 @@ func toggle_tabVisible():
 	#print(tabVisible)
 	tabVisible = !tabVisible
 
-	print(tabVisible)
+	#print(tabVisible)
 
 	if tabVisible:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CONFINED)

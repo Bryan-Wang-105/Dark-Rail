@@ -131,6 +131,7 @@ func _scavenge2_button_pressed() -> void:
 		player.setPerkActive(index)
 		world._update_menus()
 		scavenge_button2.text = "Active"
+		scavenge_button2.disabled = true
 
 	else:
 		pass
