@@ -7,7 +7,8 @@ extends CharacterBody3D
 @onready var interact_ray: RayCast3D = $head/interact_ray
 @onready var camera: Camera3D = $head/Camera3D
 @onready var panel: Panel = $"../UI/CharacterMenu/Panel"
-@onready var hand: Node3D = $Hand
+@onready var hand: Node3D = $head/Hand
+
 
 # Movement Vars
 var SPEED = 5.0
@@ -49,6 +50,9 @@ func _ready() -> void:
 	
 	# update inventory signal
 	interact_ray.connect("update_inventory", call_update)
+	
+	# Set up intial slot
+	current_slot = inventory_data.slot_datas[hotbar_pos]
 
 func _input(event):
 	if event is InputEventMouseMotion and tabVisible == false:
@@ -93,6 +97,7 @@ func _physics_process(delta: float) -> void:
 				# if item should be destroyed
 				if use_item.use(self):
 					inventory_data.slot_datas[hotbar_pos] = null
+					current_slot = null
 					emit_signal("update_inventory")
 				else:
 					pass
@@ -116,6 +121,8 @@ func _physics_process(delta: float) -> void:
 				get_parent().add_child(toDrop_node)
 			
 				inventory_data.slot_datas[hotbar_pos] = null
+				current_slot = null
+				print("update!!!")
 				emit_signal("update_inventory")
 
 		# Scrolling

@@ -3,13 +3,17 @@ extends PanelContainer
 const Slot = preload("res://Inventory/slot.tscn")
 
 @onready var item_grid: GridContainer = $MarginContainer/ItemGrid
+#@onready var player_hand: Node3D = $"../../../Player/Head/Hand"
 
 var player
+var player_hand
 var index
+var held_node
+var held_item
+var item_collider
 
 func set_inventory_data(inventory_data: InventoryData, hotbar_pos: int) -> void:
 	populate_item_grid(inventory_data.slot_datas, hotbar_pos)
-
 
 func populate_item_grid(slot_datas: Array[SlotData], hotbar_pos: int) -> void:
 	index = 0
@@ -69,3 +73,42 @@ func highlight_slot(hotbar_pos: int) -> void:
 	# Set the new style
 	slot.set("theme_override_styles/panel", new_style)
 	pass
+
+func showItemInHand():
+	print("\nUpdating hand")
+	player = get_parent().get_parent().get_parent().player
+	player_hand = player.hand
+	
+	# Clear current hand item
+	for child in player_hand.get_children():
+		child.queue_free()
+
+	#print(player.current_slot.item_data.name)
+	print(player.hotbar_pos)
+	print(player.current_slot)
+	
+	if player.current_slot:
+		print("show")
+		print(player.current_slot.item_data.name)
+		print(player.current_slot.item_data.pathToAsset)
+	
+		# Configure the item node
+		var held_item = load(player.current_slot.item_data.pathToAsset)
+		var held_node = held_item.instantiate()
+		
+		# Configure item position and traits
+		held_node.position = player.hand.position
+		held_node.freeze = true
+		# disable colliders on item in hand
+		held_node.process_mode = Node.PROCESS_MODE_DISABLED
+
+		# Spawn the item to players hand
+		player_hand.add_child(held_node)
+	
+	else:
+		print("Emptying!!!")
+		# Clear current hand item
+		for child in player_hand.get_children():
+			child.queue_free()
+	
+	print("\n")

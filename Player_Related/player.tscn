@@ -51,6 +51,9 @@ text = "
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Hand" type="Node3D" parent="head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.21531, -0.189618, -0.348044)
+
 [node name="hotbar_pos" type="Label" parent="."]
 visible = false
 offset_left = 24.0
@@ -78,6 +81,3 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_tjk28")
-
-[node name="Hand" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.437908, 0.165255, -0.679005)

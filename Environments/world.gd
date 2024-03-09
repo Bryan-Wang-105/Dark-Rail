@@ -35,6 +35,9 @@ func _ready() -> void:
 	# Set initial inventory
 	inventory_interface.set_player_inventory_data(player.inventory_data, 0)
 	
+	# Make sure item in hand is set
+	inventory_interface.showItemInHand()
+	
 	# Update tab menu
 	_update_menus()
 
@@ -53,10 +56,14 @@ func _update_menus():
 	market_menu_fare.text = "Fare: $" + str(player.getFare())
 
 func _on_scroll():
+	# Skipped Inventory --> Player gap into just player interface
 	player_inventory.highlight_slot(player.hotbar_pos)
+	inventory_interface.showItemInHand()
 
 func _update_inventory():
+	print("Updateing2!!!")
 	inventory_interface.set_player_inventory_data(player.inventory_data, player.hotbar_pos)
+	inventory_interface.showItemInHand()
 	
 func _process(_delta: float) -> void:
 	pass

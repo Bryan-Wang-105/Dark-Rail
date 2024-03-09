@@ -8,9 +8,11 @@ signal drop_item(item: SlotData)
 func set_player_inventory_data(inventory_data: InventoryData, hotbar_pos: int) -> void:
 	player_inventory.set_inventory_data(inventory_data, hotbar_pos)
 
+func showItemInHand() -> void:
+	player_inventory.showItemInHand()
+
 func _ready() -> void:
 	player.connect("drop_item", _drop_item)
-
 
 func _drop_item():
 	print("Dropped Item")
