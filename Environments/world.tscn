@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=43 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
 [ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dxbt18var80m0" path="res://Assets/perkPictures/Durability/heal kit.png" id="22_qngpf"]
 [ext_resource type="Texture2D" uid="uid://c6nyyyobwwsml" path="res://Assets/perkPictures/Durability/coins.png" id="23_jixw2"]
 [ext_resource type="FontFile" uid="uid://cam3miybf48cn" path="res://Assets/Fonts/lemonMilkFont/LEMONMILK-Bold.otf" id="23_of61f"]
+[ext_resource type="PackedScene" uid="uid://rsv3388phjpt" path="res://Item/item_assets/torch.tscn" id="27_036xj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -90,7 +91,7 @@ shadow_enabled = true
 [node name="Environment" parent="." instance=ExtResource("1_moki4")]
 
 [node name="Player" parent="." instance=ExtResource("2_oxyhy")]
-transform = Transform3D(-0.99801, 0, -0.0630518, 0, 1, 0, 0.0630518, 0, -0.99801, 0.000657737, 1.12937, 20.0323)
+transform = Transform3D(-0.99801, 0, -0.0630518, 0, 1, 0, 0.0630518, 0, -0.99801, 0.000657737, 1.12937, -17.8947)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -821,17 +822,23 @@ Within the depths of stones lies a cursed allure, ensnaring the souls of men in 
 
 [i](gain 5% chance per stop to spawn a crown jewel)[/i]"
 
+[node name="torch2" parent="." instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1891, 0.81366, -21.8065)
+
+[node name="torch" parent="." instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772871, -23.8355)
+
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.32908, 19.8951)
+transform = Transform3D(-0.00898827, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00898827, -9.38102, 5.32908, -22.0348)
 
 [node name="KingCoin" parent="." instance=ExtResource("9_3lib6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08166, 7, 20.5783)
+transform = Transform3D(-0.00898827, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00898827, -10.0545, 7, -23.1226)
 
 [node name="Market" parent="." instance=ExtResource("10_hg4uw")]
-transform = Transform3D(-0.999972, 0, 0.00750488, 0, 1, 0, -0.00750488, 0, -0.999972, 0, 0, 22.0611)
+transform = Transform3D(0.0164926, 0, 0.999864, 0, 1, 0, -0.999864, 0, 0.0164926, -11.5469, 0, -22.0543)
 
 [node name="KingCoin2" parent="." instance=ExtResource("9_3lib6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.42016, 7, 20.5783)
+transform = Transform3D(-0.00898827, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00898827, -10.077, 7, -20.6209)
 
 [connection signal="pressed" from="UI/MarketMenu/Panel/Panel/SupportTab/Support/SupportButton" to="UI/MarketMenu" method="_on_support_button_pressed"]
 [connection signal="pressed" from="UI/MarketMenu/Panel/Panel/DurabilityTab/Durability/DurabilityButton" to="UI/MarketMenu" method="_on_durability_button_pressed"]
