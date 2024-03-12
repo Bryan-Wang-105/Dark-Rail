@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://rsv3388phjpt"]
+
+[ext_resource type="Script" path="res://Item/item_assets/torch.gd" id="1_28rku"]
+[ext_resource type="Resource" uid="uid://8a7jvefa2bbb" path="res://Item/items/torch.tres" id="2_27e62"]
+[ext_resource type="Script" path="res://Inventory/slot_data.gd" id="3_lhrwu"]
+
+[sub_resource type="Resource" id="Resource_wjkhe"]
+script = ExtResource("3_lhrwu")
+item_data = ExtResource("2_27e62")
+quantity = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_wpn83"]
+size = Vector3(0.05, 0.3, 0.05)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy6os"]
+albedo_color = Color(0.54902, 0.258824, 0.156863, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_bk2ln"]
+points = PackedVector3Array(0.0297619, 0.152381, 0.0297619, -0.025, -0.139683, -0.025, -0.027381, -0.152381, 0.0297619, 0.0297619, -0.152381, -0.027381, -0.025, 0.139683, -0.025, 0.0297619, -0.152381, 0.0297619, -0.027381, 0.152381, 0.0297619, 0.0297619, 0.152381, -0.027381)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_j5k7a"]
+top_radius = 0.05
+bottom_radius = 0.025
+height = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3omwf"]
+albedo_color = Color(0.823529, 0.647059, 0.321569, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0yhhx"]
+points = PackedVector3Array(-0.0104631, 0.0403607, -0.046346, 0.00914253, 0.0488033, 0.0488033, 0.0152304, 0.0487483, 0.0472213, 0.0119902, -0.0479646, 0.0224799, -0.0488031, 0.048803, 0.0091434, 0.0472222, 0.0487412, -0.0152227, -0.00895672, -0.0478032, -0.0239016, -0.0164793, -0.0479348, 0.0194723, 0.0208172, -0.0476006, -0.0148729, 0.0197219, 0.0485517, -0.0455101, 0.0455117, 0.0485454, 0.0197148, -0.044101, 0.0486644, -0.0228079, -0.0257255, 0.0484348, 0.0423757, -0.0256363, -0.0467551, -0.00301432, 0.0256358, -0.046757, 0.00301445, -0.00301508, -0.0467554, 0.0256361, -0.0302172, 0.0483546, -0.0392858, 0.00301354, -0.0467557, -0.0256363, 0.0352211, 0.0490102, -0.0352224, 0.0366323, 0.0488353, 0.0335736, -0.0441034, 0.048667, 0.0228091, -0.0208219, -0.0475865, -0.0148684, 0.0359325, 0.05, 0.0171789, -0.00914429, 0.0488044, 0.0488044, 0.0208158, -0.0475975, 0.0148719, -0.0239019, -0.047803, 0.00895604, 0.0091428, 0.0488047, -0.0488047, 0.0479652, 0.0434593, 0.00599114, -0.0488045, 0.0488045, -0.00914367, 0.0119897, -0.0479627, -0.022479, -0.0372668, 0.0447199, 0.0313077, 0.0257262, 0.0484392, 0.0423795)
+
+[node name="torch" type="RigidBody3D"]
+script = ExtResource("1_28rku")
+slot_data = SubResource("Resource_wjkhe")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157426, 0)
+mesh = SubResource("BoxMesh_wpn83")
+surface_material_override/0 = SubResource("StandardMaterial3D_oy6os")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.157426, 0)
+shape = SubResource("ConvexPolygonShape3D_bk2ln")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.346842, 0)
+mesh = SubResource("CylinderMesh_j5k7a")
+surface_material_override/0 = SubResource("StandardMaterial3D_3omwf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.346842, 0)
+shape = SubResource("ConvexPolygonShape3D_0yhhx")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.365545, 0.0744974)
+light_color = Color(0.862745, 0.529412, 0.184314, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0850942, -0.0695398)
+light_color = Color(0.862745, 0.529412, 0.184314, 1)
+light_energy = 5.049
+
+[node name="OmniLight3D" type="OmniLight3D" parent="OmniLight3D/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.073358, -0.100537)
+light_color = Color(0.862745, 0.529412, 0.184314, 1)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="OmniLight3D/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.104341, -0.0888115, -0.0309976)
+light_color = Color(0.862745, 0.529412, 0.184314, 1)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="OmniLight3D/OmniLight3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.111902, -0.0888115, -0.0309976)
+light_color = Color(0.862745, 0.529412, 0.184314, 1)

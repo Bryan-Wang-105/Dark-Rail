@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6dsvwsrmvmid"]
+
+[ext_resource type="PackedScene" uid="uid://cy36aygvs66pn" path="res://Assets/characters/gobot/gobot_skin.tscn" id="1_3l8e0"]
+[ext_resource type="Script" path="res://Environments/market.gd" id="1_oukba"]
+[ext_resource type="PackedScene" uid="uid://d4asmyj88segt" path="res://Assets/Props/weapon_rack.tscn" id="2_fx2ik"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ll1m7"]
+size = Vector3(4, 1, 0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nbxil"]
+albedo_color = Color(0.870588, 0.266667, 0.172549, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtwdu"]
+size = Vector3(3, 1, 0.5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_8101l"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 4.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_embdo"]
+albedo_color = Color(0, 0.780392, 0.541176, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_aujnp"]
+top_radius = 0.1
+bottom_radius = 0.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jngkq"]
+albedo_color = Color(0.647059, 0.129412, 0.266667, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ks61h"]
+size = Vector3(3.97949, 2.47705, 3.16748)
+
+[sub_resource type="BoxMesh" id="BoxMesh_rjdqu"]
+
+[node name="Market" type="RigidBody3D"]
+mass = 1000.0
+script = ExtResource("1_oukba")
+
+[node name="Base" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.519472, 0)
+mesh = SubResource("BoxMesh_ll1m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_nbxil")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.00146794, -2.81678)
+mesh = SubResource("BoxMesh_ll1m7")
+surface_material_override/0 = SubResource("StandardMaterial3D_nbxil")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.74852, 0, -1.25665)
+mesh = SubResource("BoxMesh_rtwdu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nbxil")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Base"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.75467, 0, -1.25665)
+mesh = SubResource("BoxMesh_rtwdu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_nbxil")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54932, -1.49475)
+mesh = SubResource("CylinderMesh_8101l")
+surface_material_override/0 = SubResource("StandardMaterial3D_embdo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74872, 0.258419, -1.24584)
+mesh = SubResource("CylinderMesh_aujnp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_embdo")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74872, 0.258419, 1.51483)
+mesh = SubResource("CylinderMesh_aujnp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_embdo")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76229, 0.258419, 1.51483)
+mesh = SubResource("CylinderMesh_aujnp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_embdo")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76229, 0.258419, -1.24584)
+mesh = SubResource("CylinderMesh_aujnp")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_embdo")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.030321, 2.50417, 0.770538)
+use_collision = true
+polygon = PackedVector2Array(-2.44215, -0.00381446, -0.580717, 1.21613, 0.597191, 1.21613, 2.3147, -0.00381446, 0, 0)
+depth = 4.3
+material = SubResource("StandardMaterial3D_jngkq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00244141, 1.24976, -1.34795)
+shape = SubResource("BoxShape3D_ks61h")
+
+[node name="GobotSkin" parent="." instance=ExtResource("1_3l8e0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.08497, 1, -1)
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="GobotSkin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.512761, 0.132304)
+mesh = SubResource("BoxMesh_rjdqu")
+skeleton = NodePath("../..")
+
+[node name="WeaponRack" parent="." instance=ExtResource("2_fx2ik")]
+transform = Transform3D(2.35169, 0, 0, 0, 2.4095, 0, 0, 0, 1.00307, 0.439686, 1.21251, -0.854097)

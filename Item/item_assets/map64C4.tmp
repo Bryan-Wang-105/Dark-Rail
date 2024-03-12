@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=3 uid="uid://c56h43b821u6g"]
+
+[ext_resource type="Script" path="res://Item/item_assets/map.gd" id="1_r51vo"]
+[ext_resource type="Resource" uid="uid://c3altslgqeurs" path="res://Item/items/Map.tres" id="2_4hd34"]
+[ext_resource type="Script" path="res://Inventory/slot_data.gd" id="3_jurnw"]
+[ext_resource type="Script" path="res://Environments/MapMenu.gd" id="4_1a6f4"]
+[ext_resource type="FontFile" uid="uid://c36uj27nn71j1" path="res://Assets/Fonts/LEMONMILK-Regular.otf" id="5_cbkbl"]
+[ext_resource type="Texture2D" uid="uid://dxvqp4kawvwjb" path="res://Assets/map.png" id="6_41cxr"]
+
+[sub_resource type="Resource" id="Resource_1l5j3"]
+script = ExtResource("3_jurnw")
+item_data = ExtResource("2_4hd34")
+quantity = 1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1f150"]
+size = Vector3(0.349579, 0.0717068, 0.580765)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fdp7j"]
+size = Vector3(0.1, 0.01, 0.2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ogtt"]
+albedo_color = Color(0.803922, 0.572549, 0.192157, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t66vj"]
+albedo_color = Color(0.521569, 0.411765, 0.117647, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nqu0j"]
+albedo_color = Color(0.576471, 0, 0.0784314, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_ojteu"]
+material = SubResource("StandardMaterial3D_nqu0j")
+text = "X"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3i446"]
+bg_color = Color(0.772549, 0.576471, 0.333333, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_jufs3"]
+font_size = 24
+font_color = Color(0.14902, 0.14902, 0.14902, 1)
+shadow_size = 20
+shadow_color = Color(0, 0, 0, 0.101961)
+
+[node name="Map" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0.564261, 0.825596, 2.46646e-08, -0.825596, 0.564261, -3.6088e-08, 0, 0, 0)
+script = ExtResource("1_r51vo")
+slot_data = SubResource("Resource_1l5j3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 1.77636e-15, 0, 1, 1.77636e-15, 1.77636e-15, 0, 1, -0.00166321, 0.00787068, 0.00206757)
+shape = SubResource("BoxShape3D_1f150")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.20889, 0, 3.55271e-14, -1.19209e-07, 1.01397, 0, 2.13163e-14, 5.32907e-15, 2.66498, 0, 0, 0)
+mesh = SubResource("BoxMesh_fdp7j")
+surface_material_override/0 = SubResource("StandardMaterial3D_0ogtt")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-0.000833137, 0, -1.61121, 0, 0.994099, 0, 0.994616, 0, -0.00134963, -0.161879, 0, 0.266431)
+polygon = PackedVector2Array(0.00292088, 0.00475247, 0.0082738, 0.0114436, 0.00470518, 0.019919, -0.0028781, 0.0248258, -0.019829, 0.0154583, -0.020275, 0.0306248, -0.002432, 0.0310709, 0.0100581, 0.0283944, 0.0185335, 0.0150122, 0.0122885, -0.000154365, 0.00336696, -0.00461511, 0, 0, 0, 0, 0, 0)
+depth = 0.2
+material = SubResource("StandardMaterial3D_t66vj")
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="."]
+transform = Transform3D(-4.34535e-08, 0, 1.61122, 0, 0.994099, 0, -0.994099, 0, -7.04285e-08, 0.161394, 0, -0.257365)
+polygon = PackedVector2Array(0.00292088, 0.00475247, 0.0082738, 0.0114436, 0.00470518, 0.019919, -0.0028781, 0.0248258, -0.019829, 0.0154583, -0.020275, 0.0306248, -0.002432, 0.0310709, 0.0100581, 0.0283944, 0.0185335, 0.0150122, 0.0122885, -0.000154365, 0.00336696, -0.00461511, 0, 0, 0, 0, 0, 0)
+depth = 0.2
+material = SubResource("StandardMaterial3D_t66vj")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.00623586, 0.998748, 0.0274535, -0.0231119, 0.0552846, -0.497336, -0.87126, 0.00568162, 0.0133893, 0.00753666, 0.0110272, 3.29438e-10)
+mesh = SubResource("TextMesh_ojteu")
+
+[node name="MapMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -212.0
+offset_right = 412.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("4_1a6f4")
+
+[node name="mapPanel" type="Panel" parent="MapMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -412.0
+offset_top = -212.0
+offset_right = 412.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_3i446")
+
+[node name="mapTitle" type="Label" parent="MapMenu/mapPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 51.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("5_cbkbl")
+theme_override_font_sizes/font_size = 20
+text = "TREASURE MAP"
+label_settings = SubResource("LabelSettings_jufs3")
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MapMenu/mapPanel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 64.0
+offset_right = 796.0
+offset_bottom = 400.0
+texture = ExtResource("6_41cxr")
+expand_mode = 1
