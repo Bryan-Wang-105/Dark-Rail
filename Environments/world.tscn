@@ -38,7 +38,8 @@ ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 sky_material = SubResource("ProceduralSkyMaterial_3ghav")
 
 [sub_resource type="Environment" id="Environment_2ohux"]
-background_mode = 2
+background_mode = 1
+background_color = Color(0.196078, 0.196078, 0.196078, 1)
 sky = SubResource("Sky_7wc0o")
 tonemap_mode = 2
 glow_enabled = true
@@ -86,7 +87,9 @@ environment = SubResource("Environment_2ohux")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+visible = false
 shadow_enabled = true
+shadow_bias = 1.0
 
 [node name="Environment" parent="." instance=ExtResource("1_moki4")]
 
@@ -827,6 +830,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1891, 0.81366, -21.8065)
 
 [node name="torch" parent="." instance=ExtResource("27_036xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772871, -23.8355)
+
+[node name="torch3" parent="." instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9946, 1.74224, 3.8282)
+
+[node name="torch4" parent="." instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74224, 12.8753)
+
+[node name="torch5" parent="." instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74224, -7.9583)
+
+[node name="torch6" parent="." instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4097, 1.74224, 3.8282)
 
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
 transform = Transform3D(-0.00898827, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00898827, -9.38102, 5.32908, -22.0348)
