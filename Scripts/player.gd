@@ -92,7 +92,8 @@ func _physics_process(delta: float) -> void:
 		# Handle use item
 		if Input.is_action_just_pressed("use"):
 			if current_slot:
-				var use_item = load(current_slot.item_data.pathToScript)
+				#var use_item = load(current_slot.item_data.pathToScript)
+				var use_item = hand.get_child(0)
 				
 				# if item should be destroyed
 				if use_item.use(self):
@@ -120,10 +121,7 @@ func _physics_process(delta: float) -> void:
 				
 				get_parent().add_child(toDrop_node)
 			
-				inventory_data.slot_datas[hotbar_pos] = null
-				current_slot = null
-				print("update!!!")
-				emit_signal("update_inventory")
+				clear_hand(hotbar_pos)
 
 		# Scrolling
 		if Input.is_action_just_pressed("scroll_up"):
@@ -187,6 +185,12 @@ func _physics_process(delta: float) -> void:
 			get_tree().quit()
 
 	move_and_slide()
+
+func clear_hand(current_pos):
+	inventory_data.slot_datas[hotbar_pos] = null
+	current_slot = null
+	print("update!!!")
+	emit_signal("update_inventory")
 
 func call_update():
 	emit_signal("update_inventory")

@@ -38,12 +38,54 @@ func interact(needSwap) -> SlotData:
 	return slot_data
 	
 
-static func use(player: CharacterBody3D):
-	print("Using Torch")
+func use(player: CharacterBody3D):
+	if player.interact_ray.is_colliding():
+		
+		var interactable = player.interact_ray.get_collider()
+		
+		if interactable is StaticBody3D:
+			print(interactable)
+			
+			# Clear hand
+			player.clear_hand(player.hotbar_pos)
+			
+			# Get point of collision
+			print("CollisionPoint:")
+			var collision_point = player.interact_ray.get_collision_point()
+			
+			# Get the start position of the ray
+			var ray_start = player.interact_ray.get_global_transform().origin
+
+			# Calculate the direction vector of the ray
+			var ray_direction = (collision_point - ray_start).normalized()
+
+			# Determine the distance you want to offset before the collision point
+			var offset_distance = .025 # Adjust this value as needed
+
+			# Calculate the new position slightly before the collision point
+			var offset_position = collision_point - ray_direction * offset_distance
+			spawn_torch(offset_position)
+
+func spawn_torch(position):
+	# Instantiate the torch scene
+	#var torch_instance = torch_scene.instance()
+	# Set the torch's position to the collision point
+	#torch_instance.global_transform.origin = position
+	# Add the torch to the scene
+	#add_child(torch_instance)
+	world = get_parent().get_parent().get_parent().get_parent()
+	print(world)
+	
+	var toDrop_item = load(slot_data.item_data.pathToAsset)
+	var toDrop_node = toDrop_item.instantiate()
+	toDrop_node.position = position
+	toDrop_node.freeze = true
+	
+	world.add_child(toDrop_node)
+
 
 	# Will return true to signal (consume / destroy item)	
 	return false
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

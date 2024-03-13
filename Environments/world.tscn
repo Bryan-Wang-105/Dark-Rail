@@ -838,7 +838,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9946, 1.74224, 3.8282)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74224, 12.8753)
 
 [node name="torch5" parent="." instance=ExtResource("27_036xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74224, -7.9583)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83734, 1.45, -18.85)
 
 [node name="torch6" parent="." instance=ExtResource("27_036xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4097, 1.74224, 3.8282)
