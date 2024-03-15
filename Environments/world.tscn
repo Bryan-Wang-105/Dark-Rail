@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c3hgjxpj824a5"]
+[gd_scene load_steps=44 format=3 uid="uid://c3hgjxpj824a5"]
 
 [ext_resource type="PackedScene" uid="uid://6tcmaf2via7e" path="res://Environments/environment.tscn" id="1_moki4"]
 [ext_resource type="Script" path="res://Environments/world.gd" id="1_xdfob"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://dxbt18var80m0" path="res://Assets/perkPictures/Durability/heal kit.png" id="22_qngpf"]
 [ext_resource type="Texture2D" uid="uid://c6nyyyobwwsml" path="res://Assets/perkPictures/Durability/coins.png" id="23_jixw2"]
 [ext_resource type="FontFile" uid="uid://cam3miybf48cn" path="res://Assets/Fonts/lemonMilkFont/LEMONMILK-Bold.otf" id="23_of61f"]
+[ext_resource type="PackedScene" uid="uid://dxcdxffdoh6na" path="res://Environments/vending_machine.tscn" id="26_pbaeu"]
 [ext_resource type="PackedScene" uid="uid://rsv3388phjpt" path="res://Item/item_assets/torch.tscn" id="27_036xj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_3ghav"]
@@ -825,6 +826,8 @@ Within the depths of stones lies a cursed allure, ensnaring the souls of men in 
 
 [i](gain 5% chance per stop to spawn a crown jewel)[/i]"
 
+[node name="VendingMachine" parent="." instance=ExtResource("26_pbaeu")]
+
 [node name="torch2" parent="." instance=ExtResource("27_036xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1891, 0.81366, -21.8065)
 
@@ -851,6 +854,12 @@ freeze = true
 
 [node name="torch6" parent="torch2" instance=ExtResource("27_036xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4149, 0.92858, 15.4005)
+
+[node name="torch10" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6926, 0.92858, 21.6207)
+
+[node name="torch11" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.0049, 0.92858, 21.6207)
 
 [node name="torch8" parent="torch2" instance=ExtResource("27_036xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4149, 0.92858, 40.5472)
