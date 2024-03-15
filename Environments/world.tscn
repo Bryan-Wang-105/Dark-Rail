@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://chgyivrhlkeuo" path="res://Assets/perkPictures/Durability/Armor (2).png" id="9_0a41g"]
 [ext_resource type="PackedScene" uid="uid://d1buffo3ps52l" path="res://Item/item_assets/KingsCoin.tscn" id="9_3lib6"]
 [ext_resource type="Texture2D" uid="uid://5bfeklgeltff" path="res://Assets/perkPictures/Durability/Shield (2).png" id="10_c8n1x"]
-[ext_resource type="PackedScene" uid="uid://c6dsvwsrmvmid" path="res://Environments/market.tscn" id="10_hg4uw"]
+[ext_resource type="PackedScene" path="res://Environments/market.tscn" id="10_hg4uw"]
 [ext_resource type="Texture2D" uid="uid://djtyuikcjfp81" path="res://Assets/perkPictures/Durability/Train (2).png" id="11_gfbna"]
 [ext_resource type="Texture2D" uid="uid://d12kql6uekhas" path="res://Assets/perkPictures/Durability/brass knuckles.png" id="12_hrdqy"]
 [ext_resource type="Texture2D" uid="uid://d0fv4lg5cp120" path="res://Assets/perkPictures/Durability/Guns.png" id="13_5iscv"]
@@ -828,20 +828,35 @@ Within the depths of stones lies a cursed allure, ensnaring the souls of men in 
 [node name="torch2" parent="." instance=ExtResource("27_036xj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.1891, 0.81366, -21.8065)
 
-[node name="torch" parent="." instance=ExtResource("27_036xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.772871, -23.8355)
+[node name="torch" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1891, -0.040789, -2.029)
+freeze = true
 
-[node name="torch3" parent="." instance=ExtResource("27_036xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9946, 1.74224, 3.8282)
+[node name="torch2" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.44838, 1.39448, 3.15694)
+freeze = true
 
-[node name="torch4" parent="." instance=ExtResource("27_036xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74224, 12.8753)
+[node name="torch3" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26301, 0.92858, 27.6778)
 
-[node name="torch5" parent="." instance=ExtResource("27_036xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.83734, 1.45, -18.85)
+[node name="torch9" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.26301, 0.92858, 40.6362)
 
-[node name="torch6" parent="." instance=ExtResource("27_036xj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4097, 1.74224, 3.8282)
+[node name="torch4" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.3231, 0.92858, 28.0683)
+
+[node name="torch5" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.5763, 1.3512, 3.02037)
+freeze = true
+
+[node name="torch6" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4149, 0.92858, 15.4005)
+
+[node name="torch8" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4149, 0.92858, 40.5472)
+
+[node name="torch7" parent="torch2" instance=ExtResource("27_036xj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.319413, 0.92858, 15.4005)
 
 [node name="Apple" parent="." instance=ExtResource("6_vcgyr")]
 transform = Transform3D(-0.00898827, 0, -0.99996, 0, 1, 0, 0.99996, 0, -0.00898827, -9.38102, 5.32908, -22.0348)
