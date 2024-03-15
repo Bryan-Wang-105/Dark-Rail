@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://b4cqelorjonwj"]
+
+[ext_resource type="Script" path="res://Environments/Button.gd" id="1_8q8tq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pjwwq"]
+size = Vector3(6.33063, 0.364746, 4.99329)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_okw82"]
+size = Vector3(0.300919, 3.51837, 4.99329)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yop7i"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2l2wa"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2e4rn"]
+points = PackedVector3Array(-0.15, -0.15, -0.15, 0.149993, 0.15, 0.15, 0.149993, 0.15, -0.15, 0.149993, -0.15, 0.15, -0.15, 0.15, 0.15, 0.149993, -0.15, -0.15, -0.15, -0.15, 0.15, -0.15, 0.15, -0.15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_cbs2c"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v3nq"]
+albedo_color = Color(0.803922, 0.0392157, 0.176471, 1)
+
+[node name="Train" type="RigidBody3D"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0207024, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14978, 1.79299, -0.313993)
+size = Vector3(6.45093, 3.50647, 5.0026)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.114609, 1.84419, -0.326874)
+operation = 2
+size = Vector3(5.86703, 2.91678, 5.05743)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107395, 2.25961, -0.337212)
+operation = 2
+size = Vector3(6.71975, 1.65976, 4.65218)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.118011, 0.228782, -0.314392)
+shape = SubResource("BoxShape3D_pjwwq")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.93382, 1.80559, -0.314392)
+shape = SubResource("BoxShape3D_okw82")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.22004, 1.80487, -0.628784)
+shape = SubResource("BoxShape3D_okw82")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37478, 0.878295, 0)
+mesh = SubResource("BoxMesh_yop7i")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37478, 0.878295, 0)
+shape = SubResource("ConvexPolygonShape3D_2l2wa")
+
+[node name="ButtonCollider" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37478, 1.4171, 0)
+shape = SubResource("ConvexPolygonShape3D_2e4rn")
+
+[node name="Button" type="MeshInstance3D" parent="ButtonCollider"]
+mesh = SubResource("BoxMesh_cbs2c")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1v3nq")
+script = ExtResource("1_8q8tq")

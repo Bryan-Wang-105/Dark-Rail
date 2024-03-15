@@ -21,7 +21,7 @@ func _process(_delta: float) -> void:
 	#if player.tabVisible == false:
 		if is_colliding():
 			var interactable = get_collider()
-			#print(interactable.name)
+			print(interactable.name)
 			
 			if interactable != null and interactable.has_method("interact"):
 				needSwap = (player.current_slot != null)
