@@ -6,19 +6,19 @@
 albedo_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mgpqm"]
-size = Vector3(1.99283, 0.0954285, 1.22168)
+size = Vector3(1.99283, 0.0824585, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e3oxw"]
-size = Vector3(0.0811996, 1.90353, 1.16827)
+size = Vector3(0.0811996, 1.90353, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fkl0u"]
-size = Vector3(0.0871334, 1.81407, 1.89368)
+size = Vector3(0.0811996, 1.81407, 1.80127)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mnp3t"]
 size = Vector3(0.0811996, 1.09795, 1.80896)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nurar"]
-size = Vector3(1.79789, 0.0824585, 1.26563)
+size = Vector3(1.79789, 0.0824585, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_vwiqu"]
 size = Vector3(0.2, 0.2, 0.03)
@@ -36,8 +36,8 @@ mass = 1000.0
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04198, -0.135986)
-size = Vector3(2, 2, 1.27197)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.04198, 0)
+size = Vector3(2, 2, 1)
 material = SubResource("StandardMaterial3D_p0olg")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGCombiner3D"]
@@ -47,33 +47,33 @@ size = Vector3(1.82208, 0.805679, 0.904053)
 material = SubResource("StandardMaterial3D_p0olg")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00509644, 1.00118, -0.10321)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00509644, 1.00118, 0.0379639)
 operation = 2
-size = Vector3(1.82208, 1.75422, 1.08191)
+size = Vector3(1.82208, 1.75422, 0.799561)
 material = SubResource("StandardMaterial3D_p0olg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00168324, 0.0894012, -0.11084)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00168324, 0.0829163, 3.05311e-16)
 shape = SubResource("BoxShape3D_mgpqm")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.954227, 1.08014, -0.0957336)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.954227, 1.08014, 0)
 shape = SubResource("BoxShape3D_e3oxw")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950488, 1.08014, -0.129638)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.950488, 1.08014, 1.66515e-07)
 shape = SubResource("BoxShape3D_e3oxw")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.042715, 1.03541, -0.723827)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.00348858, 1.03541, -0.476223)
 shape = SubResource("BoxShape3D_fkl0u")
 
 [node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.000356715, 1.48384, 0.465958)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.000356715, 1.48384, 0.472463)
 shape = SubResource("BoxShape3D_mnp3t")
 
 [node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00481153, 1.99668, -0.132813)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00481153, 1.99668, 3.88578e-16)
 shape = SubResource("BoxShape3D_nurar")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
@@ -83,15 +83,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70039, 1.18905, -6.123e-08
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.915633, 1.18905, 8.00472e-08)
 
 [node name="VendingButton" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.51528e-08, 1.11252, 0.516488)
 lock_rotation = true
 freeze = true
 script = ExtResource("1_617od")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VendingButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0160621, 1.67917, 0.55099)
 mesh = SubResource("BoxMesh_vwiqu")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_gfgy1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VendingButton"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0160621, 1.67917, 0.55099)
 shape = SubResource("ConvexPolygonShape3D_wkjme")

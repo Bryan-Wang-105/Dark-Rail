@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://60g3y6frxoja"]
+
+[ext_resource type="Script" path="res://Item/item_assets/weapon_assets/sword.gd" id="1_ueg8i"]
+[ext_resource type="Resource" uid="uid://cui5srd6cwfpj" path="res://Item/items/sword.tres" id="2_jssed"]
+[ext_resource type="Script" path="res://Inventory/slot_data.gd" id="3_npln8"]
+
+[sub_resource type="Resource" id="Resource_mrevu"]
+script = ExtResource("3_npln8")
+item_data = ExtResource("2_jssed")
+quantity = 1
+
+[sub_resource type="BoxMesh" id="BoxMesh_mide2"]
+size = Vector3(0.075, 0.015, 1.1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ivl1"]
+albedo_color = Color(0.611765, 0.611765, 0.611765, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_w51mx"]
+size = Vector3(0.2, 0.035, 0.075)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1soe3"]
+albedo_color = Color(1, 0.368627, 0.294118, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_eukg8"]
+size = Vector3(0.077, 0.05, 0.015)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_w5k3f"]
+points = PackedVector3Array(-0.0409728, -0.010981, -0.553481, 0.0425551, 0.00990506, 0.553481, 0.0425551, -0.010981, 0.553481, 0.0425551, 0.00990506, -0.553481, -0.0409728, 0.00990506, 0.553481, -0.0409728, -0.010981, 0.553481, 0.0425551, -0.010981, -0.553481, -0.0409728, 0.00990506, -0.553481)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_m740u"]
+points = PackedVector3Array(0.093545, 0.0175, 0.0371362, -0.0931217, -0.0175, -0.0357804, -0.093545, 0.0175, -0.0359458, 0.093545, 0.0175, -0.0359458, -0.093545, 0.0175, 0.0371362, 0.0931217, -0.0175, 0.0369709, 0.0931217, -0.0175, -0.0357804, -0.0931217, -0.0175, 0.0369709)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_22h4f"]
+points = PackedVector3Array(-0.0360955, -0.0236368, -0.0075, 0.00111432, 0.0235528, 0.0071063, 0.00220612, 0.0221349, 0.00701025, -0.0377362, -0.0247137, 0.0075, 0.0377362, -0.0247137, 0.0075, 0.0353871, -0.0209573, -0.00735608, -0.00111432, 0.0235528, -0.00743963, 0.0360955, -0.0236368, -0.0075, -0.00111432, 0.0235528, 0.0071063, 0.00111432, 0.0235528, -0.00743963, -0.0353871, -0.0209573, -0.00735608, -0.0353871, -0.0209573, 0.00702274, 0.0353871, -0.0209573, 0.00702274)
+
+[node name="Sword" type="RigidBody3D"]
+mass = 2.89
+script = ExtResource("1_ueg8i")
+slot_data = SubResource("Resource_mrevu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.525879, -0.85031, -0.0206095, 0.324534, 0.222989, -0.919214, 0.786212, 0.476706, 0.39322, 0, 0.497521, -0.194938)
+mesh = SubResource("BoxMesh_mide2")
+surface_material_override/0 = SubResource("StandardMaterial3D_4ivl1")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.413615)
+mesh = SubResource("BoxMesh_w51mx")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_1soe3")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.574631)
+mesh = SubResource("PrismMesh_eukg8")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.525879, -0.85031, -0.0206095, 0.324534, 0.222989, -0.919214, 0.786212, 0.476706, 0.39322, 0, 0.497521, -0.194938)
+shape = SubResource("ConvexPolygonShape3D_w5k3f")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.525879, -0.85031, -0.0206095, 0.324534, 0.222989, -0.919214, 0.786212, 0.476706, 0.39322, -0.00852441, 0.11732, -0.0322962)
+shape = SubResource("ConvexPolygonShape3D_m740u")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.525879, 0.0206096, -0.85031, 0.324534, 0.919214, 0.222989, 0.786212, -0.39322, 0.476706, 0.0118429, 1.02573, -0.420894)
+shape = SubResource("ConvexPolygonShape3D_22h4f")

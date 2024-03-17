@@ -38,7 +38,7 @@ func interact(needSwap) -> SlotData:
 	return slot_data
 
 static func use(player: CharacterBody3D):
-	print("Shot Crossbow")
+	print("Shielding!")
 	
 	# Will return true to signal (consume / destroy item)	
 	return false

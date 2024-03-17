@@ -15,5 +15,5 @@ name = "Crossbow"
 description = "Shoots straight enough"
 stackable = false
 texture = SubResource("AtlasTexture_ngugt")
-pathToAsset = "res://Item/item_assets/crossbow.tscn"
-pathToScript = "res://Item/item_assets/crossbow.gd"
+pathToAsset = "res://Item/item_assets/weapon_assets/crossbow.tscn"
+pathToScript = "res://Item/item_assets/weapon_assets/crossbow.gd"

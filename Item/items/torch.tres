@@ -10,7 +10,7 @@ region = Rect2(320, 320, 32, 32)
 [resource]
 script = ExtResource("1_3yutk")
 name = "Torch"
-description = "A bright torch"
+description = "Burns brightly"
 stackable = true
 texture = SubResource("AtlasTexture_jwprs")
 pathToAsset = "res://Item/item_assets/torch.tscn"

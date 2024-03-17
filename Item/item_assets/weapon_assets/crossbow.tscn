@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://k6oer73ovi52"]
 
-[ext_resource type="Script" path="res://Item/item_assets/crossbow.gd" id="1_cs5m4"]
+[ext_resource type="Script" path="res://Item/item_assets/weapon_assets/crossbow.gd" id="1_cs5m4"]
 [ext_resource type="Resource" uid="uid://c0tv1oyh3844a" path="res://Item/items/crossbow.tres" id="2_141sh"]
 [ext_resource type="Script" path="res://Inventory/slot_data.gd" id="3_kqkrx"]
 
