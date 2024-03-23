@@ -1,4 +1,7 @@
 extends Node3D
+
+const DEFAULT_PORT: int = 12345
+
 @onready var player: CharacterBody3D = $Player
 
 @onready var inventory_interface: Control = $UI/InventoryInterface
@@ -35,11 +38,35 @@ func _ready() -> void:
 	# Set initial inventory
 	inventory_interface.set_player_inventory_data(player.inventory_data, 0)
 	
+	# SERVER
+	# Set client connection callback
+	multiplayer.connected_to_server.connect(self.init_client)
+	# Join server on startup
+	connect_to_server()
+	
 	# Make sure item in hand is set
 	inventory_interface.showItemInHand()
 	
 	# Update tab menu
 	_update_menus()
+
+func connect_to_server() -> void:
+	var peer = ENetMultiplayerPeer.new()
+	#Set client to localhost
+	peer.create_client('127.0.0.1', DEFAULT_PORT)
+	multiplayer.multiplayer_peer = peer
+	print("Connecting to server...")
+
+func init_client() -> void:
+	print("Connected to server.")
+	var client_id: int = multiplayer.get_unique_id()
+	var player_name: String = "Player_" + str(client_id)
+	rpc_id(1, "spawn_player", player_name)
+
+# Server func stub
+@rpc("any_peer")
+func spawn_player(client_id: int, player_name: String) -> void:
+	pass
 
 func _exit_screen():
 	if char_menu_panel.visible:
